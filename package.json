@@ -1,0 +1,17 @@
+{
+  "name": "@owlmeans/connect-root",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "bun@1.4.2",
+  "scripts": {
+    "dev": "bun run --filter './packages/*' --filter '!@owlmeans/_tpl' --if-present --parallel dev",
+    "build": "bun run --filter './packages/*' --filter '!@owlmeans/_tpl' --if-present build",
+    "watch": "bun run --filter './packages/*' --filter '!@owlmeans/_tpl' --if-present --parallel watch",
+    "test": "bun run --filter './packages/*' --filter '!@owlmeans/_tpl' --if-present test",
+    "prepare": "sh -c 'test -f .agents/scripts/link-skills.sh && sh .agents/scripts/link-skills.sh || true'"
+  },
+  "workspaces": [
+    "packages/*",
+    "libraries/common/packages/dep-config"
+  ]
+}

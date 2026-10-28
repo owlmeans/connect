@@ -1,0 +1,33 @@
+{
+  "name": "@owlmeans/_tpl",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/owlmeans/connect.git",
+    "directory": "packages/_tpl"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "tsc -b -w --preserveWatchOutput --pretty",
+    "watch": "tsc -b -w --preserveWatchOutput --pretty"
+  },
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./build/index.d.ts",
+      "import": "./build/index.js",
+      "default": "./build/index.js"
+    }
+  },
+  "devDependencies": {
+    "@owlmeans/dep-config": "^0.1.18-rc.8",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,12 @@
+node_modules/
+bun.lock
+/libraries/*
+!/libraries/.gitkeep
+/packages/*/build/*
+!/packages/*/build/.gitkeep
+*.tsbuildinfo
+.env
+**/tmp/**
+.claude/skills/*
+!.claude/skills/.gitkeep
+.agents/linked-skills/
