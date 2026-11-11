@@ -27,7 +27,7 @@
     }
   },
   "devDependencies": {
-    "@owlmeans/dep-config": "^0.1.21",
+    "@owlmeans/dep-config": "^0.2.0-alpha.0",
     "typescript": "^7.0.2"
   }
 }

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 3,
+  "package": "@owlmeans/server-payment-stripe",
+  "version": "0.2.0-alpha.0",
+  "generatedAt": "2026-11-09T19:45:13.356Z",
+  "canonicalRepo": "https://github.com/owlmeans/connect",
+  "entries": [
+    {
+      "kind": "skill",
+      "name": "server-payment-stripe",
+      "category": "package-specific",
+      "file": "skills/server-payment-stripe/SKILL.md",
+      "canonicalPath": ".agents/skills/server-payment-stripe/SKILL.md"
+    }
+  ]
+}

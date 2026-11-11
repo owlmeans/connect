@@ -1,0 +1,257 @@
+{
+  "all": {
+    "scanned": 2,
+    "updated": 2
+  },
+  "entity": 0,
+  "reconciled": {
+    "retried": 0,
+    "mailed": 0,
+    "observed": 0,
+    "backfilled": 1,
+    "locked": 1,
+    "failed": 0
+  },
+  "calls": [
+    {
+      "call": "subscriptions.retrieve",
+      "args": [
+        "sub_gone"
+      ]
+    },
+    {
+      "call": "subscriptions.retrieve",
+      "args": [
+        "sub_r"
+      ]
+    },
+    {
+      "call": "invoices.retrieve",
+      "args": [
+        "in_r"
+      ]
+    },
+    {
+      "call": "subscriptions.retrieve",
+      "args": [
+        "sub_r"
+      ]
+    },
+    {
+      "call": "subscriptions.retrieve",
+      "args": [
+        "sub_gone"
+      ]
+    },
+    {
+      "call": "checkout.sessions.list",
+      "args": [
+        {
+          "created": {
+            "gte": 1792231200
+          },
+          "status": "complete",
+          "limit": 100
+        }
+      ]
+    },
+    {
+      "call": "invoices.retrieve",
+      "args": [
+        "in_back"
+      ]
+    },
+    {
+      "call": "customers.retrieve",
+      "args": [
+        "cus_legacy"
+      ]
+    }
+  ],
+  "observed": {
+    "subscription": [
+      {
+        "change": "created",
+        "previous": null,
+        "current": {
+          "entityId": "entity-1",
+          "planSku": "team-monthly",
+          "productSku": "app-plans",
+          "rank": 20,
+          "status": "active",
+          "paygate": "stripe",
+          "subscriptionId": "sub_r",
+          "service": "app",
+          "periodStart": "2026-11-01T10:00:00.000Z",
+          "periodEnd": "2026-12-01T10:00:00.000Z",
+          "cancelAtPeriodEnd": false,
+          "createdAt": "2026-09-23T10:00:00.000Z",
+          "capabilities": [
+            {
+              "scope": "feature",
+              "permissions": {
+                "basic": true,
+                "whitelabel": true,
+                "preview": true
+              }
+            }
+          ],
+          "limits": {
+            "seats": {
+              "kind": "occupancy",
+              "limit": 10
+            },
+            "exports": {
+              "kind": "window",
+              "window": "day",
+              "limit": 30
+            },
+            "reports": {
+              "kind": "lifetime",
+              "limit": 40
+            }
+          }
+        },
+        "active": true,
+        "eventKey": "subscription:sub_r:created:2026-09-23T10:00:00.000Z"
+      }
+    ]
+  },
+  "subscriptions": [
+    {
+      "id": "seed-r",
+      "entityId": "entity-1",
+      "planSku": "team-monthly",
+      "productSku": "app-plans",
+      "service": "app",
+      "paygate": "stripe",
+      "externalId": "sub_r",
+      "status": "active",
+      "rank": 20,
+      "createdAt": "2026-09-23T10:00:00.000Z",
+      "itemId": "si_1",
+      "priceId": "price_team-monthly",
+      "externalStatus": "active",
+      "periodStart": "2026-11-01T10:00:00.000Z",
+      "periodEnd": "2026-12-01T10:00:00.000Z",
+      "cancelAtPeriodEnd": false,
+      "latestInvoiceId": "in_r",
+      "customerId": "cus_r",
+      "updatedAt": "2026-11-02T10:00:00.000Z",
+      "syncedAt": "2026-11-02T10:00:00.000Z",
+      "propagated": {
+        "planSku": "team-monthly",
+        "rank": 20,
+        "status": "active",
+        "cancelAtPeriodEnd": false
+      },
+      "initialPropagatedAt": "2026-11-02T10:00:00.000Z"
+    },
+    {
+      "id": "seed-gone",
+      "entityId": "entity-1",
+      "planSku": "pro-monthly",
+      "productSku": "app-plans",
+      "service": "app",
+      "paygate": "stripe",
+      "externalId": "sub_gone",
+      "status": "canceled",
+      "rank": 10,
+      "createdAt": "2026-08-14T10:00:00.000Z",
+      "endedAt": "2026-11-02T10:00:00.000Z",
+      "updatedAt": "2026-11-02T10:00:00.000Z",
+      "syncedAt": "2026-11-02T10:00:00.000Z"
+    }
+  ],
+  "purchases": [
+    {
+      "purchaseId": "stripe:sub_r",
+      "entityId": "entity-1",
+      "kind": "subscription",
+      "paygate": "stripe",
+      "subscriptionId": "sub_r",
+      "invoiceId": "in_r",
+      "productSku": "app-plans",
+      "planSku": "team-monthly",
+      "inScope": true,
+      "language": "en",
+      "currency": "usd",
+      "amountSubtotalMinor": 0,
+      "amountTaxMinor": 0,
+      "amountTotalMinor": 0,
+      "textVersion": "terms-v1",
+      "copyVersion": "2026-10-04.2",
+      "purchasedAt": "2026-11-01T10:00:00.000Z",
+      "deadline": "2026-11-22T00:00:00.000Z",
+      "contractRef": "CR-<ref>",
+      "createdAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-purchase-1"
+    },
+    {
+      "purchaseId": "stripe:cs_back",
+      "entityId": "entity-1",
+      "kind": "top-up",
+      "paygate": "stripe",
+      "sessionId": "cs_back",
+      "paymentIntentId": "pi_back",
+      "invoiceId": "in_back",
+      "invoiceNumber": "INV-0001",
+      "invoiceLineId": "il_pl",
+      "productSku": "app-credits",
+      "planSku": "app-credit-unit",
+      "country": "PL",
+      "region": "eu",
+      "ipCountry": "PL",
+      "inScope": true,
+      "language": "pl",
+      "email": "buyer@shop.eu",
+      "name": "Jan Kowalski",
+      "currency": "eur",
+      "amountSubtotalMinor": 919,
+      "amountTaxMinor": 211,
+      "amountTotalMinor": 1130,
+      "netAmountMinor": 1000,
+      "amountCurrency": "usd",
+      "termsAccepted": true,
+      "textVersion": "terms-v1",
+      "copyVersion": "2026-10-04.2",
+      "purchasedAt": "2026-10-31T10:00:00.000Z",
+      "deadline": "2026-11-22T00:00:00.000Z",
+      "contractRef": "CR-<ref>",
+      "createdAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-purchase-2"
+    }
+  ],
+  "profiles": [
+    {
+      "entityId": "entity-1",
+      "country": "PL",
+      "region": "eu",
+      "currency": "eur",
+      "language": "pl",
+      "source": "checkout",
+      "paygate": "stripe",
+      "customerId": "cus_1",
+      "sessionId": "cs_back",
+      "ipCountry": "PL",
+      "email": "buyer@shop.eu",
+      "name": "Jan Kowalski",
+      "lockedAt": "2026-11-02T10:00:00.000Z",
+      "createdAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-billing-profile-1"
+    },
+    {
+      "entityId": "entity-legacy",
+      "country": "DE",
+      "region": "eu",
+      "currency": "eur",
+      "language": "de",
+      "source": "customer",
+      "paygate": "stripe",
+      "customerId": "cus_legacy",
+      "lockedAt": "2026-11-02T10:00:00.000Z",
+      "createdAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-billing-profile-2"
+    }
+  ]
+}

@@ -1,0 +1,808 @@
+{
+  "webhookUrl": "https://api.example.com/payment-gate/webhook/stripe",
+  "first": {
+    "value": {
+      "ok": true
+    }
+  },
+  "firstCalls": [
+    {
+      "call": "products.retrieve",
+      "args": [
+        "app-credits"
+      ]
+    },
+    {
+      "call": "products.create",
+      "args": [
+        {
+          "id": "app-credits",
+          "name": "Credits",
+          "active": true,
+          "metadata": {
+            "sku": "app-credits",
+            "services": "app"
+          }
+        }
+      ]
+    },
+    {
+      "call": "prices.list",
+      "args": [
+        {
+          "product": "app-credits",
+          "active": true,
+          "limit": 100,
+          "expand": [
+            "data.currency_options"
+          ]
+        }
+      ]
+    },
+    {
+      "call": "rawRequest",
+      "args": [
+        "POST",
+        "/v1/fx_quotes",
+        {
+          "to_currency": "eur",
+          "from_currencies[]": "usd",
+          "lock_duration": "none"
+        },
+        {
+          "apiVersion": "2025-07-30.preview"
+        }
+      ]
+    },
+    {
+      "call": "products.retrieve",
+      "args": [
+        "app-plans"
+      ]
+    },
+    {
+      "call": "products.create",
+      "args": [
+        {
+          "id": "app-plans",
+          "name": "Plans",
+          "active": true,
+          "metadata": {
+            "sku": "app-plans",
+            "services": "app"
+          }
+        }
+      ]
+    },
+    {
+      "call": "prices.list",
+      "args": [
+        {
+          "product": "app-plans",
+          "active": true,
+          "limit": 100,
+          "expand": [
+            "data.currency_options"
+          ]
+        }
+      ]
+    },
+    {
+      "call": "prices.create",
+      "args": [
+        {
+          "product": "app-plans",
+          "currency": "eur",
+          "unit_amount": 1800,
+          "lookup_key": "pro-monthly",
+          "transfer_lookup_key": true,
+          "nickname": "pro-monthly",
+          "recurring": {
+            "interval": "month"
+          },
+          "tax_behavior": "exclusive",
+          "currency_options": {
+            "usd": {
+              "unit_amount": 2000,
+              "tax_behavior": "exclusive"
+            }
+          },
+          "metadata": {
+            "sku": "pro-monthly",
+            "services": "app"
+          }
+        }
+      ]
+    },
+    {
+      "call": "prices.list",
+      "args": [
+        {
+          "product": "app-plans",
+          "active": true,
+          "limit": 100,
+          "expand": [
+            "data.currency_options"
+          ]
+        }
+      ]
+    },
+    {
+      "call": "prices.create",
+      "args": [
+        {
+          "product": "app-plans",
+          "currency": "eur",
+          "unit_amount": 4500,
+          "lookup_key": "team-monthly",
+          "transfer_lookup_key": true,
+          "nickname": "team-monthly",
+          "recurring": {
+            "interval": "month"
+          },
+          "tax_behavior": "exclusive",
+          "currency_options": {
+            "usd": {
+              "unit_amount": 5000,
+              "tax_behavior": "exclusive"
+            }
+          },
+          "metadata": {
+            "sku": "team-monthly",
+            "services": "app"
+          }
+        }
+      ]
+    },
+    {
+      "call": "prices.list",
+      "args": [
+        {
+          "product": "app-plans",
+          "active": true,
+          "limit": 100,
+          "expand": [
+            "data.currency_options"
+          ]
+        }
+      ]
+    },
+    {
+      "call": "prices.create",
+      "args": [
+        {
+          "product": "app-plans",
+          "currency": "eur",
+          "unit_amount": 18000,
+          "lookup_key": "pro-yearly",
+          "transfer_lookup_key": true,
+          "nickname": "pro-yearly",
+          "recurring": {
+            "interval": "year"
+          },
+          "tax_behavior": "exclusive",
+          "currency_options": {
+            "usd": {
+              "unit_amount": 20000,
+              "tax_behavior": "exclusive"
+            }
+          },
+          "metadata": {
+            "sku": "pro-yearly",
+            "services": "app"
+          }
+        }
+      ]
+    },
+    {
+      "call": "products.retrieve",
+      "args": [
+        "app-seats"
+      ]
+    },
+    {
+      "call": "products.create",
+      "args": [
+        {
+          "id": "app-seats",
+          "name": "Seats",
+          "tax_code": "txcd_10103001",
+          "active": true,
+          "metadata": {
+            "sku": "app-seats",
+            "services": "app"
+          },
+          "unit_label": "seat"
+        }
+      ]
+    },
+    {
+      "call": "prices.list",
+      "args": [
+        {
+          "product": "app-seats",
+          "active": true,
+          "limit": 100,
+          "expand": [
+            "data.currency_options"
+          ]
+        }
+      ]
+    },
+    {
+      "call": "prices.create",
+      "args": [
+        {
+          "product": "app-seats",
+          "currency": "eur",
+          "unit_amount": 450,
+          "lookup_key": "app-seats-consumable",
+          "transfer_lookup_key": true,
+          "nickname": "seat-pack",
+          "billing_scheme": "per_unit",
+          "tax_behavior": "exclusive",
+          "currency_options": {
+            "usd": {
+              "unit_amount": 500,
+              "tax_behavior": "exclusive"
+            }
+          },
+          "metadata": {
+            "sku": "seat-pack",
+            "services": "app"
+          }
+        }
+      ]
+    },
+    {
+      "call": "prices.list",
+      "args": [
+        {
+          "product": "app-plans",
+          "active": true,
+          "limit": 100
+        }
+      ]
+    },
+    {
+      "call": "billingPortal.configurations.list",
+      "args": [
+        {
+          "active": true,
+          "limit": 100
+        }
+      ]
+    },
+    {
+      "call": "billingPortal.configurations.create",
+      "args": [
+        {
+          "features": {
+            "customer_update": {
+              "enabled": true,
+              "allowed_updates": [
+                "tax_id"
+              ]
+            },
+            "invoice_history": {
+              "enabled": true
+            },
+            "payment_method_update": {
+              "enabled": true
+            },
+            "subscription_cancel": {
+              "enabled": true,
+              "mode": "at_period_end",
+              "proration_behavior": "none"
+            },
+            "subscription_update": {
+              "enabled": true,
+              "default_allowed_updates": [
+                "price"
+              ],
+              "products": [
+                {
+                  "product": "app-plans",
+                  "prices": [
+                    "price_1",
+                    "price_2",
+                    "price_3"
+                  ]
+                }
+              ],
+              "proration_behavior": "create_prorations"
+            }
+          },
+          "business_profile": {
+            "headline": "Example",
+            "terms_of_service_url": "https://legal.example.com/terms"
+          },
+          "default_return_url": "https://app.example.com/billing",
+          "metadata": {
+            "owlmeans": "payment",
+            "service": "app",
+            "deployment": "https://api.example.com/payment-gate/webhook/stripe"
+          }
+        }
+      ]
+    },
+    {
+      "call": "webhookEndpoints.list",
+      "args": [
+        {
+          "limit": 100
+        }
+      ]
+    },
+    {
+      "call": "webhookEndpoints.create",
+      "args": [
+        {
+          "url": "https://api.example.com/payment-gate/webhook/stripe",
+          "enabled_events": [
+            "charge.dispute.closed",
+            "charge.dispute.created",
+            "charge.dispute.funds_reinstated",
+            "charge.dispute.funds_withdrawn",
+            "charge.refunded",
+            "checkout.session.async_payment_failed",
+            "checkout.session.async_payment_succeeded",
+            "checkout.session.completed",
+            "checkout.session.expired",
+            "customer.created",
+            "customer.deleted",
+            "customer.subscription.created",
+            "customer.subscription.deleted",
+            "customer.subscription.paused",
+            "customer.subscription.pending_update_applied",
+            "customer.subscription.pending_update_expired",
+            "customer.subscription.resumed",
+            "customer.subscription.trial_will_end",
+            "customer.subscription.updated",
+            "customer.updated",
+            "invoice.marked_uncollectible",
+            "invoice.paid",
+            "invoice.payment_action_required",
+            "invoice.payment_failed",
+            "invoice.upcoming",
+            "invoice.voided",
+            "refund.created",
+            "refund.failed",
+            "refund.updated"
+          ],
+          "api_version": "2025-02-24.acacia",
+          "description": "owlmeans:app",
+          "metadata": {
+            "owlmeans": "payment",
+            "service": "app"
+          }
+        }
+      ]
+    }
+  ],
+  "second": {
+    "value": {
+      "ok": true
+    }
+  },
+  "secondCalls": [
+    {
+      "call": "products.retrieve",
+      "args": [
+        "app-credits"
+      ]
+    },
+    {
+      "call": "products.update",
+      "args": [
+        "app-credits",
+        {
+          "name": "Credits",
+          "active": true,
+          "metadata": {
+            "sku": "app-credits",
+            "services": "app"
+          }
+        }
+      ]
+    },
+    {
+      "call": "prices.list",
+      "args": [
+        {
+          "product": "app-credits",
+          "active": true,
+          "limit": 100,
+          "expand": [
+            "data.currency_options"
+          ]
+        }
+      ]
+    },
+    {
+      "call": "rawRequest",
+      "args": [
+        "POST",
+        "/v1/fx_quotes",
+        {
+          "to_currency": "eur",
+          "from_currencies[]": "usd",
+          "lock_duration": "none"
+        },
+        {
+          "apiVersion": "2025-07-30.preview"
+        }
+      ]
+    },
+    {
+      "call": "products.retrieve",
+      "args": [
+        "app-plans"
+      ]
+    },
+    {
+      "call": "products.update",
+      "args": [
+        "app-plans",
+        {
+          "name": "Plans",
+          "active": true,
+          "metadata": {
+            "sku": "app-plans",
+            "services": "app"
+          }
+        }
+      ]
+    },
+    {
+      "call": "prices.list",
+      "args": [
+        {
+          "product": "app-plans",
+          "active": true,
+          "limit": 100,
+          "expand": [
+            "data.currency_options"
+          ]
+        }
+      ]
+    },
+    {
+      "call": "prices.list",
+      "args": [
+        {
+          "product": "app-plans",
+          "active": true,
+          "limit": 100,
+          "expand": [
+            "data.currency_options"
+          ]
+        }
+      ]
+    },
+    {
+      "call": "prices.list",
+      "args": [
+        {
+          "product": "app-plans",
+          "active": true,
+          "limit": 100,
+          "expand": [
+            "data.currency_options"
+          ]
+        }
+      ]
+    },
+    {
+      "call": "products.retrieve",
+      "args": [
+        "app-seats"
+      ]
+    },
+    {
+      "call": "products.update",
+      "args": [
+        "app-seats",
+        {
+          "name": "Seats",
+          "tax_code": "txcd_10103001",
+          "active": true,
+          "metadata": {
+            "sku": "app-seats",
+            "services": "app"
+          },
+          "unit_label": "seat"
+        }
+      ]
+    },
+    {
+      "call": "prices.list",
+      "args": [
+        {
+          "product": "app-seats",
+          "active": true,
+          "limit": 100,
+          "expand": [
+            "data.currency_options"
+          ]
+        }
+      ]
+    },
+    {
+      "call": "prices.list",
+      "args": [
+        {
+          "product": "app-plans",
+          "active": true,
+          "limit": 100
+        }
+      ]
+    },
+    {
+      "call": "billingPortal.configurations.list",
+      "args": [
+        {
+          "active": true,
+          "limit": 100
+        }
+      ]
+    },
+    {
+      "call": "billingPortal.configurations.update",
+      "args": [
+        "bpc_5",
+        {
+          "features": {
+            "customer_update": {
+              "enabled": true,
+              "allowed_updates": [
+                "tax_id"
+              ]
+            },
+            "invoice_history": {
+              "enabled": true
+            },
+            "payment_method_update": {
+              "enabled": true
+            },
+            "subscription_cancel": {
+              "enabled": true,
+              "mode": "at_period_end",
+              "proration_behavior": "none"
+            },
+            "subscription_update": {
+              "enabled": true,
+              "default_allowed_updates": [
+                "price"
+              ],
+              "products": [
+                {
+                  "product": "app-plans",
+                  "prices": [
+                    "price_1",
+                    "price_2",
+                    "price_3"
+                  ]
+                }
+              ],
+              "proration_behavior": "create_prorations"
+            }
+          },
+          "business_profile": {
+            "headline": "Example",
+            "terms_of_service_url": "https://legal.example.com/terms"
+          },
+          "default_return_url": "https://app.example.com/billing",
+          "metadata": {
+            "owlmeans": "payment",
+            "service": "app",
+            "deployment": "https://api.example.com/payment-gate/webhook/stripe"
+          }
+        }
+      ]
+    },
+    {
+      "call": "webhookEndpoints.retrieve",
+      "args": [
+        "we_6"
+      ]
+    },
+    {
+      "call": "webhookEndpoints.update",
+      "args": [
+        "we_6",
+        {
+          "url": "https://api.example.com/payment-gate/webhook/stripe",
+          "enabled_events": [
+            "charge.dispute.closed",
+            "charge.dispute.created",
+            "charge.dispute.funds_reinstated",
+            "charge.dispute.funds_withdrawn",
+            "charge.refunded",
+            "checkout.session.async_payment_failed",
+            "checkout.session.async_payment_succeeded",
+            "checkout.session.completed",
+            "checkout.session.expired",
+            "customer.created",
+            "customer.deleted",
+            "customer.subscription.created",
+            "customer.subscription.deleted",
+            "customer.subscription.paused",
+            "customer.subscription.pending_update_applied",
+            "customer.subscription.pending_update_expired",
+            "customer.subscription.resumed",
+            "customer.subscription.trial_will_end",
+            "customer.subscription.updated",
+            "customer.updated",
+            "invoice.marked_uncollectible",
+            "invoice.paid",
+            "invoice.payment_action_required",
+            "invoice.payment_failed",
+            "invoice.upcoming",
+            "invoice.voided",
+            "refund.created",
+            "refund.failed",
+            "refund.updated"
+          ],
+          "description": "owlmeans:app",
+          "metadata": {
+            "owlmeans": "payment",
+            "service": "app"
+          },
+          "disabled": false
+        }
+      ]
+    }
+  ],
+  "fingerprints": [
+    {
+      "sku": "app-credits",
+      "hash": "e0dc25a2bca248a583286200533e7edd0c464eb4b0684a0ee7799525252c65b5",
+      "productId": "app-credits",
+      "prices": [],
+      "updatedAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-fingerprint-5"
+    },
+    {
+      "sku": "app-plans",
+      "hash": "0640f965564ebcb9e87a35719079f0b79a23ad5dc79eea6a8e244f8b9b068c84",
+      "productId": "app-plans",
+      "prices": [
+        {
+          "planSku": "pro-monthly",
+          "priceId": "price_1",
+          "lookupKey": "pro-monthly",
+          "currency": "eur",
+          "unitAmount": 1800,
+          "options": [
+            {
+              "currency": "usd",
+              "unitAmount": 2000
+            }
+          ],
+          "taxBehavior": "exclusive",
+          "interval": "month",
+          "sourceUnitAmount": 2000,
+          "sourceCurrency": "usd",
+          "syncedAt": "2026-11-02T10:00:00.000Z"
+        },
+        {
+          "planSku": "team-monthly",
+          "priceId": "price_2",
+          "lookupKey": "team-monthly",
+          "currency": "eur",
+          "unitAmount": 4500,
+          "options": [
+            {
+              "currency": "usd",
+              "unitAmount": 5000
+            }
+          ],
+          "taxBehavior": "exclusive",
+          "interval": "month",
+          "sourceUnitAmount": 5000,
+          "sourceCurrency": "usd",
+          "syncedAt": "2026-11-02T10:00:00.000Z"
+        },
+        {
+          "planSku": "pro-yearly",
+          "priceId": "price_3",
+          "lookupKey": "pro-yearly",
+          "currency": "eur",
+          "unitAmount": 18000,
+          "options": [
+            {
+              "currency": "usd",
+              "unitAmount": 20000
+            }
+          ],
+          "taxBehavior": "exclusive",
+          "interval": "year",
+          "sourceUnitAmount": 20000,
+          "sourceCurrency": "usd",
+          "syncedAt": "2026-11-02T10:00:00.000Z"
+        }
+      ],
+      "updatedAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-fingerprint-6"
+    },
+    {
+      "sku": "app-seats",
+      "hash": "70dcbdd51f3dbf40b144116f322815dcf360e860d2480003919d1f5792cea422",
+      "productId": "app-seats",
+      "prices": [
+        {
+          "planSku": "seat-pack",
+          "priceId": "price_4",
+          "lookupKey": "app-seats-consumable",
+          "currency": "eur",
+          "unitAmount": 450,
+          "options": [
+            {
+              "currency": "usd",
+              "unitAmount": 500
+            }
+          ],
+          "taxBehavior": "exclusive",
+          "sourceUnitAmount": 500,
+          "sourceCurrency": "usd",
+          "syncedAt": "2026-11-02T10:00:00.000Z"
+        }
+      ],
+      "updatedAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-fingerprint-7"
+    },
+    {
+      "sku": "portal:app",
+      "hash": "8cde477a6b4c413c2b4ab9823166c57ab4face20ad61ee73994265622e6e1567",
+      "externalId": "bpc_5",
+      "updatedAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-fingerprint-8"
+    }
+  ],
+  "webhooks": [
+    {
+      "paygate": "stripe",
+      "service": "app",
+      "url": "https://api.example.com/payment-gate/webhook/stripe",
+      "externalId": "we_6",
+      "secret": "whsec_7",
+      "apiVersion": "2025-02-24.acacia",
+      "events": [
+        "charge.dispute.closed",
+        "charge.dispute.created",
+        "charge.dispute.funds_reinstated",
+        "charge.dispute.funds_withdrawn",
+        "charge.refunded",
+        "checkout.session.async_payment_failed",
+        "checkout.session.async_payment_succeeded",
+        "checkout.session.completed",
+        "checkout.session.expired",
+        "customer.created",
+        "customer.deleted",
+        "customer.subscription.created",
+        "customer.subscription.deleted",
+        "customer.subscription.paused",
+        "customer.subscription.pending_update_applied",
+        "customer.subscription.pending_update_expired",
+        "customer.subscription.resumed",
+        "customer.subscription.trial_will_end",
+        "customer.subscription.updated",
+        "customer.updated",
+        "invoice.marked_uncollectible",
+        "invoice.paid",
+        "invoice.payment_action_required",
+        "invoice.payment_failed",
+        "invoice.upcoming",
+        "invoice.voided",
+        "refund.created",
+        "refund.failed",
+        "refund.updated"
+      ],
+      "hash": "8519aaa3eddcbcd88f0197f6448f287ff4f92a4fc752dd89b8e7b5a79164ffc0",
+      "createdAt": "2026-11-02T10:00:00.000Z",
+      "updatedAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-webhook-1"
+    }
+  ]
+}

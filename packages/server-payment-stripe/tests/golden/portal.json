@@ -1,0 +1,205 @@
+{
+  "links": {
+    "manage": "https://billing.example.test/p/2",
+    "payment-method": "https://billing.example.test/p/3",
+    "cancel": "https://billing.example.test/p/4",
+    "update": "https://billing.example.test/p/5",
+    "change": "https://billing.example.test/p/6"
+  },
+  "calls": [
+    {
+      "call": "prices.list",
+      "args": [
+        {
+          "product": "app-plans",
+          "active": true,
+          "limit": 100
+        }
+      ]
+    },
+    {
+      "call": "billingPortal.configurations.list",
+      "args": [
+        {
+          "active": true,
+          "limit": 100
+        }
+      ]
+    },
+    {
+      "call": "billingPortal.configurations.create",
+      "args": [
+        {
+          "features": {
+            "customer_update": {
+              "enabled": true,
+              "allowed_updates": [
+                "tax_id"
+              ]
+            },
+            "invoice_history": {
+              "enabled": true
+            },
+            "payment_method_update": {
+              "enabled": true
+            },
+            "subscription_cancel": {
+              "enabled": true,
+              "mode": "at_period_end",
+              "proration_behavior": "none"
+            },
+            "subscription_update": {
+              "enabled": true,
+              "default_allowed_updates": [
+                "price"
+              ],
+              "products": [
+                {
+                  "product": "app-plans",
+                  "prices": [
+                    "price_pro",
+                    "price_team"
+                  ]
+                }
+              ],
+              "proration_behavior": "create_prorations"
+            }
+          },
+          "business_profile": {
+            "headline": "Example",
+            "terms_of_service_url": "https://legal.example.com/terms"
+          },
+          "default_return_url": "https://app.example.com/billing",
+          "metadata": {
+            "owlmeans": "payment",
+            "service": "app",
+            "deployment": "https://api.example.com/payment-gate/webhook/stripe"
+          }
+        }
+      ]
+    },
+    {
+      "call": "billingPortal.sessions.create",
+      "args": [
+        {
+          "customer": "cus_portal",
+          "return_url": "https://app.example.com/billing/back",
+          "configuration": "bpc_1"
+        }
+      ]
+    },
+    {
+      "call": "billingPortal.sessions.create",
+      "args": [
+        {
+          "customer": "cus_portal",
+          "return_url": "https://app.example.com/billing/back",
+          "configuration": "bpc_1",
+          "flow_data": {
+            "type": "payment_method_update",
+            "after_completion": {
+              "type": "redirect",
+              "redirect": {
+                "return_url": "https://app.example.com/billing/back"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "call": "billingPortal.sessions.create",
+      "args": [
+        {
+          "customer": "cus_portal",
+          "return_url": "https://app.example.com/billing/back",
+          "configuration": "bpc_1",
+          "flow_data": {
+            "type": "subscription_cancel",
+            "subscription_cancel": {
+              "subscription": "sub_portal"
+            },
+            "after_completion": {
+              "type": "redirect",
+              "redirect": {
+                "return_url": "https://app.example.com/billing/back"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "call": "billingPortal.sessions.create",
+      "args": [
+        {
+          "customer": "cus_portal",
+          "return_url": "https://app.example.com/billing/back",
+          "configuration": "bpc_1",
+          "flow_data": {
+            "type": "subscription_update",
+            "subscription_update": {
+              "subscription": "sub_portal"
+            },
+            "after_completion": {
+              "type": "redirect",
+              "redirect": {
+                "return_url": "https://app.example.com/billing/back"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "call": "prices.list",
+      "args": [
+        {
+          "lookup_keys": [
+            "team-monthly"
+          ],
+          "active": true,
+          "limit": 1
+        }
+      ]
+    },
+    {
+      "call": "billingPortal.sessions.create",
+      "args": [
+        {
+          "customer": "cus_portal",
+          "return_url": "https://app.example.com/billing/back",
+          "configuration": "bpc_1",
+          "flow_data": {
+            "type": "subscription_update_confirm",
+            "subscription_update_confirm": {
+              "subscription": "sub_portal",
+              "items": [
+                {
+                  "id": "si_portal",
+                  "price": "price_team",
+                  "quantity": 1
+                }
+              ]
+            },
+            "after_completion": {
+              "type": "redirect",
+              "redirect": {
+                "return_url": "https://app.example.com/billing/back"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "fingerprints": [
+    {
+      "sku": "portal:app",
+      "hash": "8cde477a6b4c413c2b4ab9823166c57ab4face20ad61ee73994265622e6e1567",
+      "externalId": "bpc_1",
+      "updatedAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-fingerprint-1"
+    }
+  ]
+}

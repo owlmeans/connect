@@ -1,0 +1,305 @@
+{
+  "fallback": "https://checkout.example.test/2",
+  "refused": "vetoed after creation",
+  "calls": [
+    {
+      "call": "customers.create",
+      "args": [
+        {
+          "metadata": {
+            "entityId": "entity-1",
+            "service": "app"
+          },
+          "email": "owner@shop.eu"
+        }
+      ]
+    },
+    {
+      "call": "customers.update",
+      "args": [
+        "cus_1",
+        {
+          "address": {
+            "country": "DE",
+            "line1": "",
+            "line2": "",
+            "city": "",
+            "state": "",
+            "postal_code": ""
+          }
+        }
+      ]
+    },
+    {
+      "call": "rawRequest",
+      "args": [
+        "POST",
+        "/v1/fx_quotes",
+        {
+          "to_currency": "eur",
+          "from_currencies[]": "usd",
+          "lock_duration": "none"
+        },
+        {
+          "apiVersion": "2025-07-30.preview"
+        }
+      ]
+    },
+    {
+      "call": "checkout.sessions.create",
+      "args": [
+        {
+          "mode": "payment",
+          "line_items": [
+            {
+              "price_data": {
+                "product": "app-credits",
+                "currency": "eur",
+                "unit_amount": 1837,
+                "tax_behavior": "exclusive"
+              },
+              "quantity": 1
+            }
+          ],
+          "invoice_creation": {
+            "enabled": true
+          },
+          "automatic_tax": {
+            "enabled": true
+          },
+          "billing_address_collection": "auto",
+          "tax_id_collection": {
+            "enabled": true
+          },
+          "customer_update": {
+            "address": "never",
+            "name": "auto"
+          },
+          "adaptive_pricing": {
+            "enabled": true
+          },
+          "allow_promotion_codes": true,
+          "consent_collection": {
+            "terms_of_service": "required"
+          },
+          "custom_text": {
+            "submit": {
+              "message": "Vorauszahlung: Credits, nur für das Konto dieser Organisation nutzbar (Rechnungsland Deutschland). Verbraucher in der EU können binnen 14 Tagen widerrufen; das Widerrufsrecht erlischt für Credits, die verwendet werden, nachdem Sie uns um den Beginn gebeten haben."
+            },
+            "terms_of_service_acceptance": {
+              "message": "Ich akzeptiere die [Abrechnungsbedingungen](https://legal.example.com/de/billing) und habe die [Widerrufsbelehrung](https://legal.example.com/de/withdrawal) gelesen."
+            }
+          },
+          "customer": "cus_1",
+          "success_url": "https://app.example.com/billing/ok",
+          "cancel_url": "https://app.example.com/billing/ok",
+          "metadata": {
+            "pricingMode": "amount",
+            "currency": "eur",
+            "entityId": "entity-1",
+            "service": "app",
+            "productSku": "app-credits",
+            "planSku": "app-credit-unit",
+            "amountCurrency": "usd",
+            "amountMinor": "2000",
+            "sourceChargeAmountMinor": "2041",
+            "chargeAmountMinor": "1837",
+            "region": "eu",
+            "country": "DE",
+            "language": "de",
+            "termsVersion": "terms-v1",
+            "copyVersion": "2026-10-04.2",
+            "termsCollected": "true",
+            "countryPinned": "true"
+          }
+        }
+      ]
+    },
+    {
+      "call": "checkout.sessions.create",
+      "args": [
+        {
+          "mode": "payment",
+          "line_items": [
+            {
+              "price_data": {
+                "product": "app-credits",
+                "currency": "eur",
+                "unit_amount": 1837,
+                "tax_behavior": "exclusive"
+              },
+              "quantity": 1
+            }
+          ],
+          "invoice_creation": {
+            "enabled": true
+          },
+          "automatic_tax": {
+            "enabled": true
+          },
+          "billing_address_collection": "auto",
+          "tax_id_collection": {
+            "enabled": true
+          },
+          "customer_update": {
+            "address": "never",
+            "name": "auto"
+          },
+          "adaptive_pricing": {
+            "enabled": true
+          },
+          "allow_promotion_codes": true,
+          "customer": "cus_1",
+          "success_url": "https://app.example.com/billing/ok",
+          "cancel_url": "https://app.example.com/billing/ok",
+          "metadata": {
+            "pricingMode": "amount",
+            "currency": "eur",
+            "entityId": "entity-1",
+            "service": "app",
+            "productSku": "app-credits",
+            "planSku": "app-credit-unit",
+            "amountCurrency": "usd",
+            "amountMinor": "2000",
+            "sourceChargeAmountMinor": "2041",
+            "chargeAmountMinor": "1837",
+            "region": "eu",
+            "country": "DE",
+            "language": "de",
+            "termsVersion": "terms-v1",
+            "copyVersion": "2026-10-04.2",
+            "termsCollected": "false",
+            "countryPinned": "true"
+          },
+          "custom_text": {
+            "submit": {
+              "message": "Vorauszahlung: Credits, nur für das Konto dieser Organisation nutzbar (Rechnungsland Deutschland). Verbraucher in der EU können binnen 14 Tagen widerrufen; das Widerrufsrecht erlischt für Credits, die verwendet werden, nachdem Sie uns um den Beginn gebeten haben."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "call": "customers.retrieve",
+      "args": [
+        "cus_1"
+      ]
+    },
+    {
+      "call": "rawRequest",
+      "args": [
+        "POST",
+        "/v1/fx_quotes",
+        {
+          "to_currency": "eur",
+          "from_currencies[]": "usd",
+          "lock_duration": "none"
+        },
+        {
+          "apiVersion": "2025-07-30.preview"
+        }
+      ]
+    },
+    {
+      "call": "checkout.sessions.create",
+      "args": [
+        {
+          "mode": "payment",
+          "line_items": [
+            {
+              "price_data": {
+                "product": "app-credits",
+                "currency": "eur",
+                "unit_amount": 1378,
+                "tax_behavior": "exclusive"
+              },
+              "quantity": 1
+            }
+          ],
+          "invoice_creation": {
+            "enabled": true
+          },
+          "automatic_tax": {
+            "enabled": true
+          },
+          "billing_address_collection": "auto",
+          "tax_id_collection": {
+            "enabled": true
+          },
+          "customer_update": {
+            "address": "never",
+            "name": "auto"
+          },
+          "adaptive_pricing": {
+            "enabled": true
+          },
+          "allow_promotion_codes": true,
+          "consent_collection": {
+            "terms_of_service": "required"
+          },
+          "custom_text": {
+            "submit": {
+              "message": "Vorauszahlung: Credits, nur für das Konto dieser Organisation nutzbar (Rechnungsland Deutschland). Verbraucher in der EU können binnen 14 Tagen widerrufen; das Widerrufsrecht erlischt für Credits, die verwendet werden, nachdem Sie uns um den Beginn gebeten haben."
+            },
+            "terms_of_service_acceptance": {
+              "message": "Ich akzeptiere die [Abrechnungsbedingungen](https://legal.example.com/de/billing) und habe die [Widerrufsbelehrung](https://legal.example.com/de/withdrawal) gelesen."
+            }
+          },
+          "customer": "cus_1",
+          "success_url": "https://app.example.com/billing/ok",
+          "cancel_url": "https://app.example.com/billing/ok",
+          "metadata": {
+            "pricingMode": "amount",
+            "currency": "eur",
+            "entityId": "entity-1",
+            "service": "app",
+            "productSku": "app-credits",
+            "planSku": "app-credit-unit",
+            "amountCurrency": "usd",
+            "amountMinor": "1500",
+            "sourceChargeAmountMinor": "1531",
+            "chargeAmountMinor": "1378",
+            "region": "eu",
+            "country": "DE",
+            "language": "de",
+            "termsVersion": "terms-v1",
+            "copyVersion": "2026-10-04.2",
+            "termsCollected": "true",
+            "countryPinned": "true"
+          }
+        }
+      ]
+    },
+    {
+      "call": "checkout.sessions.expire",
+      "args": [
+        "cs_3"
+      ]
+    }
+  ],
+  "settled": [
+    {
+      "entityId": "entity-1",
+      "productSku": "app-credits",
+      "planSku": "app-credit-unit",
+      "sessionId": "cs_3",
+      "reservationId": "r-hold",
+      "amountMinor": 1500,
+      "outcome": "failed",
+      "at": "2026-11-02T10:00:00.000Z"
+    }
+  ],
+  "events": [
+    {
+      "recordId": "entity-1",
+      "recordKind": "checkout",
+      "entityId": "entity-1",
+      "action": "checkout-terms-fallback",
+      "ok": false,
+      "externalId": "cs_2",
+      "detail": "{\"message\":\"You cannot collect consent to your terms of service unless a URL is set in the Stripe Dashboard. Update your public business details at https://dashboard.stripe.com/settings/public to set the URL for your terms of service.\",\"param\":\"consent_collection[terms_of_service]\",\"mode\":\"amount\",\"productSku\":\"app-credits\",\"planSku\":\"app-credit-unit\"}",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-1"
+    }
+  ]
+}

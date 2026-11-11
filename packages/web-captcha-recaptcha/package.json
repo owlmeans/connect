@@ -1,0 +1,60 @@
+{
+  "name": "@owlmeans/web-captcha-recaptcha",
+  "version": "0.2.0-alpha.0",
+  "description": "Google reCAPTCHA client for @owlmeans/web-captcha: the v3 loader, Google's notice in eight languages, the v2 checkbox widget (./react) and the append helper that registers it.",
+  "license": "MIT",
+  "homepage": "https://owlmeans.com/docs/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/owlmeans/connect.git",
+    "directory": "packages/web-captcha-recaptcha"
+  },
+  "bugs": {
+    "url": "https://github.com/owlmeans/connect/issues"
+  },
+  "author": "Igor Tkachenko <igor.tkachenko@owlmeans.com> (https://owlmeans.com)",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "sleep 4 && nodemon -e ts,tsx,json --watch src --exec \"tsc -p ./tsconfig.json\"",
+    "watch": "tsc -b -w --preserveWatchOutput --pretty",
+    "test": "bun test ./tests"
+  },
+  "main": "build/index.js",
+  "module": "build/index.js",
+  "types": "build/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./build/index.js",
+      "require": "./build/index.js",
+      "default": "./build/index.js",
+      "module": "./build/index.js",
+      "types": "./build/index.d.ts"
+    },
+    "./react": {
+      "import": "./build/react.js",
+      "require": "./build/react.js",
+      "default": "./build/react.js",
+      "module": "./build/react.js",
+      "types": "./build/react.d.ts"
+    }
+  },
+  "dependencies": {
+    "@owlmeans/web-captcha": "^0.2.0-alpha.0",
+    "react-google-recaptcha": "^3.1.0"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "devDependencies": {
+    "@owlmeans/dep-config": "^0.2.0-alpha.0",
+    "@types/bun": "^1.4.4",
+    "@types/react": "^19.3.0",
+    "@types/react-google-recaptcha": "^2.1.9",
+    "nodemon": "^3.1.14",
+    "typescript": "^7.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "@owlmeans/web-gtm",
+  "version": "0.2.0-alpha.1",
+  "description": "Google tag behind OwlMeans consent: the Consent Mode signal provider, the head tag with its defaults before the loader, the tag-manager analytics sink, CSP hosts and cookie-policy disclosure.",
+  "license": "MIT",
+  "homepage": "https://owlmeans.com/docs/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/owlmeans/connect.git",
+    "directory": "packages/web-gtm"
+  },
+  "bugs": {
+    "url": "https://github.com/owlmeans/connect/issues"
+  },
+  "author": "Igor Tkachenko <igor.tkachenko@owlmeans.com> (https://owlmeans.com)",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "sleep 2 && nodemon -e ts,json --watch src --exec \"tsc -p ./tsconfig.json\"",
+    "watch": "tsc -b -w --preserveWatchOutput --pretty",
+    "test": "bun test ./tests"
+  },
+  "main": "build/index.js",
+  "module": "build/index.js",
+  "types": "build/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./build/index.js",
+      "require": "./build/index.js",
+      "default": "./build/index.js",
+      "module": "./build/index.js",
+      "types": "./build/index.d.ts"
+    }
+  },
+  "dependencies": {
+    "@owlmeans/consent": "^0.2.0-alpha.1",
+    "@owlmeans/log": "^0.2.0-alpha.0",
+    "@owlmeans/web-log": "^0.2.0-alpha.1"
+  },
+  "devDependencies": {
+    "@owlmeans/dep-config": "^0.2.0-alpha.0",
+    "@types/bun": "^1.4.4",
+    "nodemon": "^3.1.14",
+    "typescript": "^7.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

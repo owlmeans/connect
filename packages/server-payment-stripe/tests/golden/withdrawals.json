@@ -1,0 +1,1151 @@
+{
+  "receipts": {
+    "topUp": {
+      "declarationId": "payment-consumer-declaration-1",
+      "receivedAt": "2026-11-02T10:00:00.000Z",
+      "content": {
+        "name": "Anna",
+        "contract": "CR-<ref>",
+        "email": "owner@shop.eu"
+      },
+      "mailed": true,
+      "status": "refunded",
+      "refundMinor": 1018,
+      "currency": "eur",
+      "subscriptionCanceled": false
+    },
+    "ofSubscription": {
+      "declarationId": "payment-consumer-declaration-2",
+      "receivedAt": "2026-11-02T10:00:00.000Z",
+      "content": {
+        "name": "Anna",
+        "contract": "CR-<ref>",
+        "email": "owner@shop.eu"
+      },
+      "mailed": true,
+      "status": "refunded",
+      "refundMinor": 2214,
+      "currency": "eur",
+      "subscriptionCanceled": true
+    },
+    "failed": {
+      "declarationId": "payment-consumer-declaration-3",
+      "receivedAt": "2026-11-02T10:00:00.000Z",
+      "content": {
+        "name": "Anna",
+        "contract": "CR-<ref>",
+        "email": "owner@shop.eu"
+      },
+      "mailed": true,
+      "status": "failed",
+      "refundMinor": 0,
+      "currency": "eur",
+      "subscriptionCanceled": false
+    },
+    "reconciled": {
+      "retried": 1,
+      "mailed": 0,
+      "observed": 0,
+      "backfilled": 0,
+      "locked": 0,
+      "failed": 0
+    },
+    "atPeriodEnd": {
+      "declarationId": "payment-consumer-declaration-4",
+      "receivedAt": "2026-11-02T10:00:00.000Z",
+      "content": {
+        "name": "Cee",
+        "contract": "CR-<ref>",
+        "email": "c@shop.eu",
+        "kind": "ordinary"
+      },
+      "mailed": true,
+      "status": "scheduled",
+      "effectiveAt": "2026-11-22T10:00:00.000Z"
+    },
+    "atDate": {
+      "declarationId": "payment-consumer-declaration-5",
+      "receivedAt": "2026-11-02T10:00:00.000Z",
+      "content": {
+        "name": "Cee",
+        "contract": "CR-<ref>",
+        "email": "c@shop.eu",
+        "kind": "ordinary",
+        "date": "2027-01-06"
+      },
+      "mailed": true,
+      "status": "scheduled",
+      "effectiveAt": "2027-01-22T10:00:00.000Z"
+    }
+  },
+  "calls": [
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_w_paid\",\"object\":\"event\",\"type\":\"checkout.session.completed\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"cs_pl\",\"object\":\"checkout.session\",\"mode\":\"payment\",\"payment_status\":\"paid\",\"status\":\"complete\",\"customer\":\"cus_1\",\"currency\":\"eur\",\"amount_subtotal\":919,\"amount_total\":1130,\"total_details\":{\"amount_tax\":211},\"payment_intent\":\"pi_pl\",\"invoice\":\"in_pl\",\"created\":1793613600,\"customer_details\":{\"address\":{\"country\":\"PL\"},\"email\":\"buyer@shop.eu\",\"name\":\"Jan Kowalski\",\"tax_ids\":[],\"tax_exempt\":\"none\"},\"consent\":{\"terms_of_service\":\"accepted\"},\"metadata\":{\"pricingMode\":\"amount\",\"amountMinor\":\"1000\",\"sourceChargeAmountMinor\":\"1021\",\"amountCurrency\":\"usd\",\"chargeAmountMinor\":\"919\",\"currency\":\"eur\",\"entityId\":\"entity-1\",\"service\":\"app\",\"productSku\":\"app-credits\",\"planSku\":\"app-credit-unit\",\"country\":\"PL\",\"language\":\"pl\",\"termsVersion\":\"terms-v1\",\"ipCountry\":\"PL\"}}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "invoices.retrieve",
+      "args": [
+        "in_pl"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_w_sub\",\"object\":\"event\",\"type\":\"customer.subscription.created\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"sub_w\",\"object\":\"subscription\",\"customer\":\"cus_1\",\"status\":\"active\",\"metadata\":{\"entityId\":\"entity-1\",\"planSku\":\"pro-monthly\",\"startRequestId\":\"payment-consumer-consent-1\",\"country\":\"PL\",\"language\":\"pl\"},\"items\":{\"object\":\"list\",\"has_more\":false,\"url\":\"\",\"data\":[{\"id\":\"si_1\",\"price\":{\"id\":\"price_pro-monthly\",\"lookup_key\":\"pro-monthly\",\"unit_amount\":1800}}]},\"current_period_start\":1793440800,\"current_period_end\":1796032800,\"cancel_at_period_end\":false,\"canceled_at\":null,\"ended_at\":null,\"pause_collection\":null,\"trial_end\":null,\"latest_invoice\":\"in_w\",\"created\":1793527200,\"default_payment_method\":\"pm_1\",\"currency\":\"eur\"}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "invoices.retrieve",
+      "args": [
+        "in_w"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_w_paid_2\",\"object\":\"event\",\"type\":\"checkout.session.completed\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"cs_2\",\"object\":\"checkout.session\",\"mode\":\"payment\",\"payment_status\":\"paid\",\"status\":\"complete\",\"customer\":\"cus_1\",\"currency\":\"eur\",\"amount_subtotal\":919,\"amount_total\":1130,\"total_details\":{\"amount_tax\":211},\"payment_intent\":\"pi_2\",\"invoice\":\"in_2\",\"created\":1793613600,\"customer_details\":{\"address\":{\"country\":\"PL\"},\"email\":\"buyer@shop.eu\",\"name\":\"Jan Kowalski\",\"tax_ids\":[],\"tax_exempt\":\"none\"},\"consent\":{\"terms_of_service\":\"accepted\"},\"metadata\":{\"pricingMode\":\"amount\",\"amountMinor\":\"1000\",\"sourceChargeAmountMinor\":\"1021\",\"amountCurrency\":\"usd\",\"chargeAmountMinor\":\"919\",\"currency\":\"eur\",\"entityId\":\"entity-1\",\"service\":\"app\",\"productSku\":\"app-credits\",\"planSku\":\"app-credit-unit\",\"country\":\"PL\",\"language\":\"pl\",\"termsVersion\":\"terms-v1\",\"ipCountry\":\"PL\"}}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "invoices.retrieve",
+      "args": [
+        "in_2"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_c_sub\",\"object\":\"event\",\"type\":\"customer.subscription.created\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"sub_c\",\"object\":\"subscription\",\"customer\":\"cus_c\",\"status\":\"active\",\"metadata\":{\"entityId\":\"entity-c\"},\"items\":{\"object\":\"list\",\"has_more\":false,\"url\":\"\",\"data\":[{\"id\":\"si_1\",\"price\":{\"id\":\"price_team-monthly\",\"lookup_key\":\"team-monthly\"}}]},\"current_period_start\":1792749600,\"current_period_end\":1795341600,\"cancel_at_period_end\":false,\"canceled_at\":null,\"ended_at\":null,\"pause_collection\":null,\"trial_end\":null,\"latest_invoice\":\"in_c\",\"created\":1793527200,\"default_payment_method\":\"pm_1\",\"currency\":\"eur\"}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "invoices.retrieve",
+      "args": [
+        "in_c"
+      ]
+    },
+    {
+      "call": "creditNotes.preview",
+      "args": [
+        {
+          "invoice": "in_pl",
+          "lines": [
+            {
+              "type": "invoice_line_item",
+              "invoice_line_item": "il_pl",
+              "amount": 828
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "call": "refunds.create",
+      "args": [
+        {
+          "payment_intent": "pi_pl",
+          "amount": 1018,
+          "reason": "requested_by_customer",
+          "metadata": {
+            "owlmeans": "payment",
+            "withdrawalId": "payment-consumer-declaration-1",
+            "purchaseId": "stripe:cs_pl"
+          }
+        },
+        {
+          "idempotencyKey": "withdrawal:payment-consumer-declaration-1:refund"
+        }
+      ]
+    },
+    {
+      "call": "creditNotes.create",
+      "args": [
+        {
+          "invoice": "in_pl",
+          "lines": [
+            {
+              "type": "invoice_line_item",
+              "invoice_line_item": "il_pl",
+              "amount": 828
+            }
+          ],
+          "refund": "re_1",
+          "memo": "Withdrawal from contract CR-<ref>, received on November 2, 2026.",
+          "metadata": {
+            "withdrawalId": "payment-consumer-declaration-1",
+            "purchaseId": "stripe:cs_pl"
+          }
+        },
+        {
+          "idempotencyKey": "withdrawal:payment-consumer-declaration-1:credit-note"
+        }
+      ]
+    },
+    {
+      "call": "subscriptions.cancel",
+      "args": [
+        "sub_w",
+        {
+          "prorate": false,
+          "invoice_now": false,
+          "cancellation_details": {
+            "comment": "withdrawal:payment-consumer-declaration-2"
+          }
+        },
+        {
+          "idempotencyKey": "withdrawal:payment-consumer-declaration-2:subscription-cancel"
+        }
+      ]
+    },
+    {
+      "call": "creditNotes.preview",
+      "args": [
+        {
+          "invoice": "in_w",
+          "lines": [
+            {
+              "type": "invoice_line_item",
+              "invoice_line_item": "il_w",
+              "amount": 1800
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "call": "refunds.create",
+      "args": [
+        {
+          "payment_intent": "pi_w",
+          "amount": 2214,
+          "reason": "requested_by_customer",
+          "metadata": {
+            "owlmeans": "payment",
+            "withdrawalId": "payment-consumer-declaration-2",
+            "purchaseId": "stripe:sub_w"
+          }
+        },
+        {
+          "idempotencyKey": "withdrawal:payment-consumer-declaration-2:refund"
+        }
+      ]
+    },
+    {
+      "call": "creditNotes.create",
+      "args": [
+        {
+          "invoice": "in_w",
+          "lines": [
+            {
+              "type": "invoice_line_item",
+              "invoice_line_item": "il_w",
+              "amount": 1800
+            }
+          ],
+          "refund": "re_3",
+          "memo": "Odstąpienie od umowy CR-<ref>, otrzymane 2 listopada 2026.",
+          "metadata": {
+            "withdrawalId": "payment-consumer-declaration-2",
+            "purchaseId": "stripe:sub_w"
+          }
+        },
+        {
+          "idempotencyKey": "withdrawal:payment-consumer-declaration-2:credit-note"
+        }
+      ]
+    },
+    {
+      "call": "creditNotes.preview",
+      "args": [
+        {
+          "invoice": "in_2",
+          "lines": [
+            {
+              "type": "invoice_line_item",
+              "invoice_line_item": "il_2",
+              "amount": 828
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "call": "refunds.create",
+      "args": [
+        {
+          "payment_intent": "pi_2",
+          "amount": 1018,
+          "reason": "requested_by_customer",
+          "metadata": {
+            "owlmeans": "payment",
+            "withdrawalId": "payment-consumer-declaration-3",
+            "purchaseId": "stripe:cs_2"
+          }
+        },
+        {
+          "idempotencyKey": "withdrawal:payment-consumer-declaration-3:refund"
+        }
+      ]
+    },
+    {
+      "call": "creditNotes.preview",
+      "args": [
+        {
+          "invoice": "in_2",
+          "lines": [
+            {
+              "type": "invoice_line_item",
+              "invoice_line_item": "il_2",
+              "amount": 828
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "call": "refunds.list",
+      "args": [
+        {
+          "payment_intent": "pi_2",
+          "limit": 100
+        }
+      ]
+    },
+    {
+      "call": "refunds.create",
+      "args": [
+        {
+          "payment_intent": "pi_2",
+          "amount": 1018,
+          "reason": "requested_by_customer",
+          "metadata": {
+            "owlmeans": "payment",
+            "withdrawalId": "payment-consumer-declaration-3",
+            "purchaseId": "stripe:cs_2"
+          }
+        },
+        {
+          "idempotencyKey": "withdrawal:payment-consumer-declaration-3:refund:1"
+        }
+      ]
+    },
+    {
+      "call": "creditNotes.create",
+      "args": [
+        {
+          "invoice": "in_2",
+          "lines": [
+            {
+              "type": "invoice_line_item",
+              "invoice_line_item": "il_2",
+              "amount": 828
+            }
+          ],
+          "refund": "re_5",
+          "memo": "Odstąpienie od umowy CR-<ref>, otrzymane 2 listopada 2026.",
+          "metadata": {
+            "withdrawalId": "payment-consumer-declaration-3",
+            "purchaseId": "stripe:cs_2"
+          }
+        },
+        {
+          "idempotencyKey": "withdrawal:payment-consumer-declaration-3:credit-note:1"
+        }
+      ]
+    },
+    {
+      "call": "checkout.sessions.list",
+      "args": [
+        {
+          "created": {
+            "gte": 1792231200
+          },
+          "status": "complete",
+          "limit": 100
+        }
+      ]
+    },
+    {
+      "call": "subscriptions.update",
+      "args": [
+        "sub_c",
+        {
+          "cancel_at_period_end": true,
+          "cancellation_details": {
+            "comment": "cancellation:payment-consumer-declaration-4"
+          }
+        },
+        {
+          "idempotencyKey": "cancellation:payment-consumer-declaration-4:schedule"
+        }
+      ]
+    },
+    {
+      "call": "subscriptions.update",
+      "args": [
+        "sub_c",
+        {
+          "cancel_at": 1800612000,
+          "proration_behavior": "none",
+          "cancellation_details": {
+            "comment": "cancellation:payment-consumer-declaration-5"
+          }
+        },
+        {
+          "idempotencyKey": "cancellation:payment-consumer-declaration-5:schedule"
+        }
+      ]
+    }
+  ],
+  "observed": {
+    "withdrawal": [
+      {
+        "withdrawalId": "payment-consumer-declaration-1",
+        "eventKey": "withdrawal:payment-consumer-declaration-1",
+        "entityId": "entity-1",
+        "channel": "in-app",
+        "purchase": {
+          "purchaseId": "stripe:cs_pl",
+          "kind": "top-up",
+          "entityId": "entity-1",
+          "contractRef": "CR-<ref>",
+          "productSku": "app-credits",
+          "planSku": "app-credit-unit",
+          "sessionId": "cs_pl",
+          "invoiceId": "in_pl",
+          "purchasedAt": "2026-11-02T10:00:00.000Z"
+        },
+        "declaredAt": "2026-11-02T10:00:00.000Z",
+        "status": "refunded",
+        "refund": {
+          "amountMinor": 1018,
+          "currency": "eur",
+          "netMinor": 828,
+          "refundId": "re_1",
+          "creditNoteId": "cn_2"
+        },
+        "units": {
+          "granted": 1000,
+          "used": 100,
+          "returned": 800
+        },
+        "subscriptionCanceled": false
+      },
+      {
+        "withdrawalId": "payment-consumer-declaration-2",
+        "eventKey": "withdrawal:payment-consumer-declaration-2",
+        "entityId": "entity-1",
+        "channel": "in-app",
+        "purchase": {
+          "purchaseId": "stripe:sub_w",
+          "kind": "subscription",
+          "entityId": "entity-1",
+          "contractRef": "CR-<ref>",
+          "productSku": "app-plans",
+          "planSku": "pro-monthly",
+          "subscriptionId": "sub_w",
+          "invoiceId": "in_w",
+          "purchasedAt": "2026-11-01T10:00:00.000Z"
+        },
+        "declaredAt": "2026-11-02T10:00:00.000Z",
+        "status": "refunded",
+        "refund": {
+          "amountMinor": 2214,
+          "currency": "eur",
+          "netMinor": 1800,
+          "refundId": "re_3",
+          "creditNoteId": "cn_4"
+        },
+        "units": {
+          "granted": 1000,
+          "used": 100,
+          "returned": 800
+        },
+        "subscriptionCanceled": true
+      },
+      {
+        "withdrawalId": "payment-consumer-declaration-3",
+        "eventKey": "withdrawal:payment-consumer-declaration-3",
+        "entityId": "entity-1",
+        "channel": "in-app",
+        "purchase": {
+          "purchaseId": "stripe:cs_2",
+          "kind": "top-up",
+          "entityId": "entity-1",
+          "contractRef": "CR-<ref>",
+          "productSku": "app-credits",
+          "planSku": "app-credit-unit",
+          "sessionId": "cs_2",
+          "invoiceId": "in_2",
+          "purchasedAt": "2026-11-02T10:00:00.000Z"
+        },
+        "declaredAt": "2026-11-02T10:00:00.000Z",
+        "status": "refunded",
+        "refund": {
+          "amountMinor": 1018,
+          "currency": "eur",
+          "netMinor": 828,
+          "refundId": "re_5",
+          "creditNoteId": "cn_6"
+        },
+        "units": {
+          "granted": 1000,
+          "used": 100,
+          "returned": 800
+        },
+        "subscriptionCanceled": false
+      }
+    ],
+    "cancellation": [
+      {
+        "cancellationId": "payment-consumer-declaration-4",
+        "eventKey": "cancellation:payment-consumer-declaration-4",
+        "entityId": "entity-c",
+        "matched": true,
+        "channel": "in-app",
+        "kind": "ordinary",
+        "status": "scheduled",
+        "subscriptionId": "sub_c",
+        "effectiveAt": "2026-11-22T10:00:00.000Z",
+        "declaredAt": "2026-11-02T10:00:00.000Z"
+      },
+      {
+        "cancellationId": "payment-consumer-declaration-5",
+        "eventKey": "cancellation:payment-consumer-declaration-5",
+        "entityId": "entity-c",
+        "matched": true,
+        "channel": "in-app",
+        "kind": "ordinary",
+        "status": "scheduled",
+        "subscriptionId": "sub_c",
+        "effectiveAt": "2027-01-22T10:00:00.000Z",
+        "declaredAt": "2026-11-02T10:00:00.000Z"
+      }
+    ]
+  },
+  "purchases": [
+    {
+      "purchaseId": "stripe:cs_pl",
+      "entityId": "entity-1",
+      "kind": "top-up",
+      "paygate": "stripe",
+      "sessionId": "cs_pl",
+      "paymentIntentId": "pi_pl",
+      "invoiceId": "in_pl",
+      "invoiceNumber": "INV-0001",
+      "invoiceLineId": "il_pl",
+      "productSku": "app-credits",
+      "planSku": "app-credit-unit",
+      "country": "PL",
+      "region": "eu",
+      "ipCountry": "PL",
+      "inScope": true,
+      "language": "pl",
+      "email": "buyer@shop.eu",
+      "name": "Jan Kowalski",
+      "currency": "eur",
+      "amountSubtotalMinor": 919,
+      "amountTaxMinor": 211,
+      "amountTotalMinor": 1130,
+      "netAmountMinor": 1000,
+      "amountCurrency": "usd",
+      "termsAccepted": true,
+      "textVersion": "terms-v1",
+      "copyVersion": "2026-10-04.2",
+      "purchasedAt": "2026-11-02T10:00:00.000Z",
+      "deadline": "2026-11-22T00:00:00.000Z",
+      "contractRef": "CR-<ref>",
+      "createdAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-purchase-1",
+      "confirmationMailAt": "2026-11-02T10:00:00.000Z",
+      "withdrawnAt": "2026-11-02T10:00:00.000Z",
+      "withdrawalId": "payment-consumer-declaration-1",
+      "updatedAt": "2026-11-02T10:00:00.000Z"
+    },
+    {
+      "purchaseId": "stripe:sub_w",
+      "entityId": "entity-1",
+      "kind": "subscription",
+      "paygate": "stripe",
+      "subscriptionId": "sub_w",
+      "paymentIntentId": "pi_w",
+      "invoiceId": "in_w",
+      "invoiceNumber": "INV-0001",
+      "invoiceLineId": "il_w",
+      "productSku": "app-plans",
+      "planSku": "pro-monthly",
+      "country": "PL",
+      "region": "eu",
+      "inScope": true,
+      "language": "pl",
+      "currency": "eur",
+      "amountSubtotalMinor": 1800,
+      "amountTaxMinor": 414,
+      "amountTotalMinor": 2214,
+      "textVersion": "terms-v1",
+      "copyVersion": "2026-10-04.2",
+      "startRequestId": "payment-consumer-consent-1",
+      "servicesStartedAt": "2026-11-02T10:00:00.000Z",
+      "consentId": "payment-consumer-consent-1",
+      "consentedAt": "2026-11-02T10:00:00.000Z",
+      "purchasedAt": "2026-11-01T10:00:00.000Z",
+      "deadline": "2026-11-22T00:00:00.000Z",
+      "contractRef": "CR-<ref>",
+      "createdAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-purchase-2",
+      "withdrawnAt": "2026-11-02T10:00:00.000Z",
+      "withdrawalId": "payment-consumer-declaration-2",
+      "updatedAt": "2026-11-02T10:00:00.000Z"
+    },
+    {
+      "purchaseId": "stripe:cs_2",
+      "entityId": "entity-1",
+      "kind": "top-up",
+      "paygate": "stripe",
+      "sessionId": "cs_2",
+      "paymentIntentId": "pi_2",
+      "invoiceId": "in_2",
+      "invoiceNumber": "INV-0001",
+      "invoiceLineId": "il_2",
+      "productSku": "app-credits",
+      "planSku": "app-credit-unit",
+      "country": "PL",
+      "region": "eu",
+      "ipCountry": "PL",
+      "inScope": true,
+      "language": "pl",
+      "email": "buyer@shop.eu",
+      "name": "Jan Kowalski",
+      "currency": "eur",
+      "amountSubtotalMinor": 919,
+      "amountTaxMinor": 211,
+      "amountTotalMinor": 1130,
+      "netAmountMinor": 1000,
+      "amountCurrency": "usd",
+      "termsAccepted": true,
+      "textVersion": "terms-v1",
+      "copyVersion": "2026-10-04.2",
+      "purchasedAt": "2026-11-02T10:00:00.000Z",
+      "deadline": "2026-11-22T00:00:00.000Z",
+      "contractRef": "CR-<ref>",
+      "createdAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-purchase-3",
+      "confirmationMailAt": "2026-11-02T10:00:00.000Z",
+      "withdrawnAt": "2026-11-02T10:00:00.000Z",
+      "withdrawalId": "payment-consumer-declaration-3",
+      "updatedAt": "2026-11-02T10:00:00.000Z"
+    },
+    {
+      "purchaseId": "stripe:sub_c",
+      "entityId": "entity-c",
+      "kind": "subscription",
+      "paygate": "stripe",
+      "subscriptionId": "sub_c",
+      "invoiceId": "in_c",
+      "productSku": "app-plans",
+      "planSku": "team-monthly",
+      "inScope": true,
+      "language": "en",
+      "currency": "eur",
+      "amountSubtotalMinor": 0,
+      "amountTaxMinor": 0,
+      "amountTotalMinor": 0,
+      "textVersion": "terms-v1",
+      "copyVersion": "2026-10-04.2",
+      "purchasedAt": "2026-11-01T10:00:00.000Z",
+      "deadline": "2026-11-22T00:00:00.000Z",
+      "contractRef": "CR-<ref>",
+      "createdAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-purchase-4",
+      "cancellationId": "payment-consumer-declaration-5",
+      "cancelEffectiveAt": "2027-01-22T10:00:00.000Z",
+      "updatedAt": "2026-11-02T10:00:00.000Z"
+    }
+  ],
+  "declarations": [
+    {
+      "kind": "withdrawal",
+      "channel": "in-app",
+      "entityId": "entity-1",
+      "purchaseId": "stripe:cs_pl",
+      "contractRef": "CR-<ref>",
+      "name": "Anna",
+      "email": "owner@shop.eu",
+      "language": "en",
+      "textVersion": "terms-v1",
+      "copyVersion": "2026-10-04.2",
+      "receivedAt": "2026-11-02T10:00:00.000Z",
+      "matched": true,
+      "status": "processing",
+      "refundMinor": 1017,
+      "currency": "eur",
+      "id": "payment-consumer-declaration-1"
+    },
+    {
+      "kind": "withdrawal",
+      "channel": "in-app",
+      "entityId": "entity-1",
+      "purchaseId": "stripe:sub_w",
+      "subscriptionId": "sub_w",
+      "contractRef": "CR-<ref>",
+      "name": "Anna",
+      "email": "owner@shop.eu",
+      "language": "pl",
+      "textVersion": "terms-v1",
+      "copyVersion": "2026-10-04.2",
+      "receivedAt": "2026-11-02T10:00:00.000Z",
+      "matched": true,
+      "status": "processing",
+      "refundMinor": 2214,
+      "currency": "eur",
+      "id": "payment-consumer-declaration-2"
+    },
+    {
+      "kind": "withdrawal",
+      "channel": "in-app",
+      "entityId": "entity-1",
+      "purchaseId": "stripe:cs_2",
+      "contractRef": "CR-<ref>",
+      "name": "Anna",
+      "email": "owner@shop.eu",
+      "language": "pl",
+      "textVersion": "terms-v1",
+      "copyVersion": "2026-10-04.2",
+      "receivedAt": "2026-11-02T10:00:00.000Z",
+      "matched": true,
+      "status": "processing",
+      "refundMinor": 1017,
+      "currency": "eur",
+      "id": "payment-consumer-declaration-3"
+    },
+    {
+      "kind": "cancellation",
+      "channel": "in-app",
+      "entityId": "entity-c",
+      "purchaseId": "stripe:sub_c",
+      "subscriptionId": "sub_c",
+      "contractRef": "CR-<ref>",
+      "name": "Cee",
+      "email": "c@shop.eu",
+      "cancellationKind": "ordinary",
+      "effective": "earliest",
+      "language": "en",
+      "textVersion": "terms-v1",
+      "copyVersion": "2026-10-04.2",
+      "receivedAt": "2026-11-02T10:00:00.000Z",
+      "matched": true,
+      "status": "scheduled",
+      "effectiveAt": "2026-11-22T10:00:00.000Z",
+      "id": "payment-consumer-declaration-4"
+    },
+    {
+      "kind": "cancellation",
+      "channel": "in-app",
+      "entityId": "entity-c",
+      "purchaseId": "stripe:sub_c",
+      "subscriptionId": "sub_c",
+      "contractRef": "CR-<ref>",
+      "name": "Cee",
+      "email": "c@shop.eu",
+      "cancellationKind": "ordinary",
+      "effective": "date",
+      "requestedDate": "2027-01-06",
+      "language": "en",
+      "textVersion": "terms-v1",
+      "copyVersion": "2026-10-04.2",
+      "receivedAt": "2026-11-02T10:00:00.000Z",
+      "matched": true,
+      "status": "scheduled",
+      "effectiveAt": "2027-01-22T10:00:00.000Z",
+      "id": "payment-consumer-declaration-5"
+    }
+  ],
+  "events": [
+    {
+      "recordId": "payment-consumer-consent-1",
+      "recordKind": "consent",
+      "entityId": "entity-1",
+      "action": "mail",
+      "step": "start",
+      "ok": true,
+      "detail": "{\"to\":\"owner@shop.eu\",\"subject\":\"Confirmation: your request to start the Pro services\"}",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-1"
+    },
+    {
+      "recordId": "payment-consumer-consent-1",
+      "recordKind": "consent",
+      "entityId": "entity-1",
+      "action": "observers",
+      "step": "consent",
+      "ok": true,
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-2"
+    },
+    {
+      "recordId": "entity-1",
+      "recordKind": "profile",
+      "entityId": "entity-1",
+      "action": "lock",
+      "ok": true,
+      "detail": "{\"source\":\"checkout\",\"country\":\"PL\",\"currency\":\"eur\",\"sessionId\":\"cs_pl\",\"ipCountry\":\"PL\",\"ipMismatch\":false}",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-3"
+    },
+    {
+      "recordId": "stripe:cs_pl",
+      "recordKind": "purchase",
+      "entityId": "entity-1",
+      "action": "mail",
+      "step": "purchase",
+      "ok": true,
+      "detail": "{\"to\":\"buyer@shop.eu\",\"subject\":\"Potwierdzenie zamówienia CR-<ref>\"}",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-4"
+    },
+    {
+      "recordId": "stripe:cs_2",
+      "recordKind": "purchase",
+      "entityId": "entity-1",
+      "action": "mail",
+      "step": "purchase",
+      "ok": true,
+      "detail": "{\"to\":\"buyer@shop.eu\",\"subject\":\"Potwierdzenie zamówienia CR-<ref>\"}",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-5"
+    },
+    {
+      "recordId": "payment-consumer-declaration-1",
+      "recordKind": "declaration",
+      "entityId": "entity-1",
+      "action": "computed",
+      "ok": true,
+      "amountMinor": 1017,
+      "currency": "eur",
+      "detail": "{\"reading\":{\"used\":200,\"usedAfter\":100,\"granted\":1000},\"deducted\":100,\"netMinor\":828,\"unitsReturned\":800,\"estimate\":{\"refundMinor\":1017,\"currency\":\"eur\",\"timeDeductionMinor\":0,\"unitsDeductionMinor\":113,\"unitsUsed\":100,\"unitsGranted\":1000}}",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-6"
+    },
+    {
+      "recordId": "payment-consumer-declaration-1",
+      "recordKind": "declaration",
+      "entityId": "entity-1",
+      "action": "mail",
+      "step": "withdrawal",
+      "ok": true,
+      "detail": "{\"to\":\"owner@shop.eu\",\"subject\":\"Acknowledgement of receipt of your withdrawal\"}",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-7"
+    },
+    {
+      "recordId": "payment-consumer-declaration-1",
+      "recordKind": "declaration",
+      "entityId": "entity-1",
+      "action": "refund",
+      "ok": true,
+      "externalId": "re_1",
+      "amountMinor": 1018,
+      "currency": "eur",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-8"
+    },
+    {
+      "recordId": "payment-consumer-declaration-1",
+      "recordKind": "declaration",
+      "entityId": "entity-1",
+      "action": "credit-note",
+      "ok": true,
+      "externalId": "cn_2",
+      "amountMinor": 1018,
+      "currency": "eur",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-9"
+    },
+    {
+      "recordId": "payment-consumer-declaration-1",
+      "recordKind": "declaration",
+      "entityId": "entity-1",
+      "action": "observers",
+      "step": "withdrawal",
+      "ok": true,
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-10"
+    },
+    {
+      "recordId": "payment-consumer-declaration-2",
+      "recordKind": "declaration",
+      "entityId": "entity-1",
+      "action": "computed",
+      "ok": true,
+      "amountMinor": 2214,
+      "currency": "eur",
+      "detail": "{\"reading\":{\"used\":200,\"usedAfter\":100,\"granted\":1000},\"deducted\":100,\"netMinor\":1800,\"unitsReturned\":800,\"estimate\":{\"refundMinor\":2214,\"currency\":\"eur\",\"timeDeductionMinor\":0,\"unitsDeductionMinor\":0,\"elapsedDays\":0,\"periodDays\":30,\"unitsUsed\":100,\"unitsGranted\":1000}}",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-11"
+    },
+    {
+      "recordId": "payment-consumer-declaration-2",
+      "recordKind": "declaration",
+      "entityId": "entity-1",
+      "action": "mail",
+      "step": "withdrawal",
+      "ok": true,
+      "detail": "{\"to\":\"owner@shop.eu\",\"subject\":\"Potwierdzenie otrzymania oświadczenia o odstąpieniu od umowy\"}",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-12"
+    },
+    {
+      "recordId": "payment-consumer-declaration-2",
+      "recordKind": "declaration",
+      "entityId": "entity-1",
+      "action": "subscription-cancel",
+      "ok": true,
+      "externalId": "sub_w",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-13"
+    },
+    {
+      "recordId": "payment-consumer-declaration-2",
+      "recordKind": "declaration",
+      "entityId": "entity-1",
+      "action": "refund",
+      "ok": true,
+      "externalId": "re_3",
+      "amountMinor": 2214,
+      "currency": "eur",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-14"
+    },
+    {
+      "recordId": "payment-consumer-declaration-2",
+      "recordKind": "declaration",
+      "entityId": "entity-1",
+      "action": "credit-note",
+      "ok": true,
+      "externalId": "cn_4",
+      "amountMinor": 2214,
+      "currency": "eur",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-15"
+    },
+    {
+      "recordId": "payment-consumer-declaration-2",
+      "recordKind": "declaration",
+      "entityId": "entity-1",
+      "action": "observers",
+      "step": "withdrawal",
+      "ok": true,
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-16"
+    },
+    {
+      "recordId": "payment-consumer-declaration-3",
+      "recordKind": "declaration",
+      "entityId": "entity-1",
+      "action": "computed",
+      "ok": true,
+      "amountMinor": 1017,
+      "currency": "eur",
+      "detail": "{\"reading\":{\"used\":200,\"usedAfter\":100,\"granted\":1000},\"deducted\":100,\"netMinor\":828,\"unitsReturned\":800,\"estimate\":{\"refundMinor\":1017,\"currency\":\"eur\",\"timeDeductionMinor\":0,\"unitsDeductionMinor\":113,\"unitsUsed\":100,\"unitsGranted\":1000}}",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-17"
+    },
+    {
+      "recordId": "payment-consumer-declaration-3",
+      "recordKind": "declaration",
+      "entityId": "entity-1",
+      "action": "mail",
+      "step": "withdrawal",
+      "ok": true,
+      "detail": "{\"to\":\"owner@shop.eu\",\"subject\":\"Potwierdzenie otrzymania oświadczenia o odstąpieniu od umowy\"}",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-18"
+    },
+    {
+      "recordId": "payment-consumer-declaration-3",
+      "recordKind": "declaration",
+      "entityId": "entity-1",
+      "action": "refund",
+      "ok": false,
+      "error": "rate_limit",
+      "amountMinor": 1018,
+      "currency": "eur",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-19"
+    },
+    {
+      "recordId": "payment-consumer-declaration-3",
+      "recordKind": "declaration",
+      "entityId": "entity-1",
+      "action": "refund",
+      "ok": true,
+      "externalId": "re_5",
+      "amountMinor": 1018,
+      "currency": "eur",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-20"
+    },
+    {
+      "recordId": "payment-consumer-declaration-3",
+      "recordKind": "declaration",
+      "entityId": "entity-1",
+      "action": "credit-note",
+      "ok": true,
+      "externalId": "cn_6",
+      "amountMinor": 1018,
+      "currency": "eur",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-21"
+    },
+    {
+      "recordId": "payment-consumer-declaration-3",
+      "recordKind": "declaration",
+      "entityId": "entity-1",
+      "action": "observers",
+      "step": "withdrawal",
+      "ok": true,
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-22"
+    },
+    {
+      "recordId": "payment-consumer-declaration-4",
+      "recordKind": "declaration",
+      "entityId": "entity-c",
+      "action": "cancel-scheduled",
+      "ok": true,
+      "externalId": "sub_c",
+      "detail": "{\"atPeriodEnd\":true,\"effectiveAt\":\"2026-11-22T10:00:00.000Z\"}",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-23"
+    },
+    {
+      "recordId": "payment-consumer-declaration-4",
+      "recordKind": "declaration",
+      "entityId": "entity-c",
+      "action": "mail",
+      "step": "cancellation",
+      "ok": true,
+      "detail": "{\"to\":\"c@shop.eu\",\"subject\":\"Acknowledgement of receipt of your cancellation\"}",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-24"
+    },
+    {
+      "recordId": "payment-consumer-declaration-4",
+      "recordKind": "declaration",
+      "entityId": "entity-c",
+      "action": "observers",
+      "step": "cancellation",
+      "ok": true,
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-25"
+    },
+    {
+      "recordId": "payment-consumer-declaration-5",
+      "recordKind": "declaration",
+      "entityId": "entity-c",
+      "action": "cancel-scheduled",
+      "ok": true,
+      "externalId": "sub_c",
+      "detail": "{\"atPeriodEnd\":false,\"effectiveAt\":\"2027-01-22T10:00:00.000Z\"}",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-26"
+    },
+    {
+      "recordId": "payment-consumer-declaration-5",
+      "recordKind": "declaration",
+      "entityId": "entity-c",
+      "action": "mail",
+      "step": "cancellation",
+      "ok": true,
+      "detail": "{\"to\":\"c@shop.eu\",\"subject\":\"Acknowledgement of receipt of your cancellation\"}",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-27"
+    },
+    {
+      "recordId": "payment-consumer-declaration-5",
+      "recordKind": "declaration",
+      "entityId": "entity-c",
+      "action": "observers",
+      "step": "cancellation",
+      "ok": true,
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-28"
+    }
+  ],
+  "subscriptions": [
+    {
+      "entityId": "entity-1",
+      "planSku": "pro-monthly",
+      "productSku": "app-plans",
+      "service": "app-plans",
+      "paygate": "stripe",
+      "externalId": "sub_w",
+      "itemId": "si_1",
+      "priceId": "price_pro-monthly",
+      "status": "active",
+      "externalStatus": "active",
+      "rank": 10,
+      "periodStart": "2026-10-31T10:00:00.000Z",
+      "periodEnd": "2026-11-30T10:00:00.000Z",
+      "cancelAtPeriodEnd": false,
+      "latestInvoiceId": "in_w",
+      "customerId": "cus_1",
+      "currency": "eur",
+      "createdAt": "2026-11-01T10:00:00.000Z",
+      "updatedAt": "2026-11-02T10:00:00.000Z",
+      "syncedAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-subscription-1",
+      "lastEventId": "evt_w_sub",
+      "propagated": {
+        "planSku": "pro-monthly",
+        "rank": 10,
+        "status": "active",
+        "cancelAtPeriodEnd": false
+      },
+      "initialPropagatedAt": "2026-11-02T10:00:00.000Z",
+      "withdrawnAt": "2026-11-02T10:00:00.000Z"
+    },
+    {
+      "entityId": "entity-c",
+      "planSku": "team-monthly",
+      "productSku": "app-plans",
+      "service": "app-plans",
+      "paygate": "stripe",
+      "externalId": "sub_c",
+      "itemId": "si_1",
+      "priceId": "price_team-monthly",
+      "status": "active",
+      "externalStatus": "active",
+      "rank": 20,
+      "periodStart": "2026-10-23T10:00:00.000Z",
+      "periodEnd": "2026-11-22T10:00:00.000Z",
+      "cancelAtPeriodEnd": false,
+      "latestInvoiceId": "in_c",
+      "customerId": "cus_c",
+      "currency": "eur",
+      "createdAt": "2026-11-01T10:00:00.000Z",
+      "updatedAt": "2026-11-02T10:00:00.000Z",
+      "syncedAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-subscription-2",
+      "lastEventId": "evt_c_sub",
+      "propagated": {
+        "planSku": "team-monthly",
+        "rank": 20,
+        "status": "active",
+        "cancelAtPeriodEnd": false
+      },
+      "initialPropagatedAt": "2026-11-02T10:00:00.000Z"
+    }
+  ]
+}

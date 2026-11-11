@@ -1,0 +1,227 @@
+{
+  "estimates": [
+    {
+      "country": "PL",
+      "source": "request",
+      "currency": "usd",
+      "behavior": "exclusive",
+      "tax": {
+        "status": "taxed",
+        "subtotalMinor": 1021,
+        "taxMinor": 235,
+        "totalMinor": 1256,
+        "scalable": true,
+        "rates": [
+          {
+            "type": "vat",
+            "percentage": "23",
+            "ratePpm": 230000,
+            "country": "PL"
+          }
+        ]
+      },
+      "region": "eu",
+      "local": {
+        "currency": "pln",
+        "exchangeRate": 0.24572649572649571,
+        "fxFeeRate": 0.04
+      }
+    },
+    {
+      "country": "PL",
+      "source": "request",
+      "currency": "usd",
+      "behavior": "exclusive",
+      "tax": {
+        "status": "taxed",
+        "subtotalMinor": 1021,
+        "taxMinor": 235,
+        "totalMinor": 1256,
+        "scalable": true,
+        "rates": [
+          {
+            "type": "vat",
+            "percentage": "23",
+            "ratePpm": 230000,
+            "country": "PL"
+          }
+        ]
+      },
+      "region": "eu",
+      "local": {
+        "currency": "pln",
+        "exchangeRate": 0.24572649572649571,
+        "fxFeeRate": 0.04
+      }
+    },
+    {
+      "country": "DE",
+      "source": "customer",
+      "currency": "eur",
+      "behavior": "exclusive",
+      "tax": {
+        "status": "reverse-charge",
+        "subtotalMinor": 1800,
+        "taxMinor": 0,
+        "totalMinor": 1800,
+        "scalable": true,
+        "rates": [
+          {
+            "type": "vat",
+            "percentage": "0",
+            "ratePpm": 0,
+            "country": "DE"
+          }
+        ]
+      },
+      "region": "eu"
+    },
+    {
+      "country": "US",
+      "source": "request",
+      "currency": "usd",
+      "behavior": "exclusive",
+      "tax": {
+        "status": "none",
+        "subtotalMinor": 2000,
+        "taxMinor": 0,
+        "totalMinor": 2000,
+        "scalable": true,
+        "rates": [
+          {
+            "type": "vat",
+            "percentage": "0",
+            "ratePpm": 0,
+            "country": "US"
+          }
+        ]
+      },
+      "region": "other"
+    },
+    {
+      "currency": "eur",
+      "behavior": "exclusive",
+      "tax": {
+        "status": "location-required",
+        "subtotalMinor": 1800,
+        "taxMinor": 0,
+        "totalMinor": 1800,
+        "scalable": false,
+        "rates": []
+      }
+    }
+  ],
+  "calls": [
+    {
+      "call": "tax.calculations.create",
+      "args": [
+        {
+          "currency": "usd",
+          "line_items": [
+            {
+              "amount": 1021,
+              "reference": "app-credit-unit",
+              "tax_behavior": "exclusive"
+            }
+          ],
+          "customer_details": {
+            "address": {
+              "country": "PL"
+            },
+            "address_source": "billing"
+          }
+        }
+      ]
+    },
+    {
+      "call": "rawRequest",
+      "args": [
+        "POST",
+        "/v1/fx_quotes",
+        {
+          "to_currency": "eur",
+          "from_currencies[]": "usd",
+          "lock_duration": "none"
+        },
+        {
+          "apiVersion": "2025-07-30.preview"
+        }
+      ]
+    },
+    {
+      "call": "rawRequest",
+      "args": [
+        "POST",
+        "/v1/fx_quotes",
+        {
+          "to_currency": "eur",
+          "from_currencies[]": "pln",
+          "lock_duration": "none"
+        },
+        {
+          "apiVersion": "2025-07-30.preview"
+        }
+      ]
+    },
+    {
+      "call": "customers.retrieve",
+      "args": [
+        "cus_e",
+        {
+          "expand": [
+            "tax_ids"
+          ]
+        }
+      ]
+    },
+    {
+      "call": "tax.calculations.create",
+      "args": [
+        {
+          "currency": "eur",
+          "line_items": [
+            {
+              "amount": 1800,
+              "reference": "pro-monthly",
+              "tax_behavior": "exclusive"
+            }
+          ],
+          "customer_details": {
+            "address": {
+              "country": "DE"
+            },
+            "address_source": "billing",
+            "tax_ids": [
+              {
+                "type": "eu_vat",
+                "value": "DE123456789"
+              }
+            ],
+            "taxability_override": "reverse_charge"
+          }
+        }
+      ]
+    },
+    {
+      "call": "tax.calculations.create",
+      "args": [
+        {
+          "currency": "usd",
+          "line_items": [
+            {
+              "amount": 2000,
+              "reference": "pro-monthly",
+              "tax_behavior": "exclusive"
+            }
+          ],
+          "customer_details": {
+            "address": {
+              "country": "US"
+            },
+            "address_source": "billing"
+          }
+        }
+      ]
+    }
+  ]
+}

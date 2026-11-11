@@ -32,7 +32,7 @@ Load `/owlmeans-code-structure` before writing, moving or reviewing TypeScript. 
 
 ## Project overview
 
-Public MIT integration packages in a Bun monorepo. `libraries/common` links common; workspace entries for upstream packages are explicit. See `.agents/project-structure.md`.
+Public MIT provider plugins (chat platforms, reCAPTCHA, Stripe, Mailgun, Google tag) in a Bun monorepo, each plugging into a provider-agnostic contract package of `common`. `connect` depends on `common` only and `common` never depends on `connect`. `libraries/common` links common; workspace entries for upstream packages are explicit. See `.agents/project-structure.md`.
 
 ## Commands
 

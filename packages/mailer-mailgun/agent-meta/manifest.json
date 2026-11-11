@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 3,
+  "package": "@owlmeans/mailer-mailgun",
+  "version": "0.2.0-alpha.0",
+  "generatedAt": "2026-11-09T19:45:13.354Z",
+  "canonicalRepo": "https://github.com/owlmeans/connect",
+  "entries": [
+    {
+      "kind": "skill",
+      "name": "mailer-mailgun",
+      "category": "package-specific",
+      "file": "skills/mailer-mailgun/SKILL.md",
+      "canonicalPath": ".agents/skills/mailer-mailgun/SKILL.md"
+    }
+  ]
+}

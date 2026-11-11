@@ -1,0 +1,554 @@
+{
+  "urls": [
+    "https://checkout.example.test/2",
+    "https://checkout.example.test/3",
+    "https://checkout.example.test/5",
+    "https://checkout.example.test/6"
+  ],
+  "calls": [
+    {
+      "call": "customers.create",
+      "args": [
+        {
+          "metadata": {
+            "entityId": "entity-1",
+            "service": "app"
+          },
+          "preferred_locales": [
+            "pl"
+          ],
+          "email": "owner@shop.eu"
+        }
+      ]
+    },
+    {
+      "call": "customers.update",
+      "args": [
+        "cus_1",
+        {
+          "address": {
+            "country": "PL",
+            "line1": "",
+            "line2": "",
+            "city": "",
+            "state": "",
+            "postal_code": ""
+          }
+        }
+      ]
+    },
+    {
+      "call": "rawRequest",
+      "args": [
+        "POST",
+        "/v1/fx_quotes",
+        {
+          "to_currency": "eur",
+          "from_currencies[]": "usd",
+          "lock_duration": "none"
+        },
+        {
+          "apiVersion": "2025-07-30.preview"
+        }
+      ]
+    },
+    {
+      "call": "checkout.sessions.create",
+      "args": [
+        {
+          "mode": "payment",
+          "line_items": [
+            {
+              "price_data": {
+                "product": "app-credits",
+                "currency": "eur",
+                "unit_amount": 919,
+                "tax_behavior": "exclusive"
+              },
+              "quantity": 1
+            }
+          ],
+          "invoice_creation": {
+            "enabled": true
+          },
+          "automatic_tax": {
+            "enabled": true
+          },
+          "billing_address_collection": "auto",
+          "tax_id_collection": {
+            "enabled": true
+          },
+          "customer_update": {
+            "address": "never",
+            "name": "auto"
+          },
+          "adaptive_pricing": {
+            "enabled": true
+          },
+          "allow_promotion_codes": true,
+          "consent_collection": {
+            "terms_of_service": "required"
+          },
+          "custom_text": {
+            "submit": {
+              "message": "Przedpłata: Credits, do wykorzystania wyłącznie na koncie tej organizacji (kraj rozliczenia Polska). Konsumenci w UE mogą odstąpić od umowy w terminie 14 dni; prawo to wygasa w odniesieniu do kredytów wykorzystanych po tym, jak poprosisz nas o rozpoczęcie."
+            },
+            "terms_of_service_acceptance": {
+              "message": "Akceptuję [Regulamin płatności](https://legal.example.com/pl/billing) i potwierdzam zapoznanie się z [pouczeniem o odstąpieniu od umowy](https://legal.example.com/pl/withdrawal)."
+            }
+          },
+          "expires_at": 1793617200,
+          "customer": "cus_1",
+          "success_url": "https://app.example.com/billing/ok",
+          "cancel_url": "https://app.example.com/billing/ok",
+          "locale": "pl",
+          "metadata": {
+            "pricingMode": "amount",
+            "currency": "eur",
+            "entityId": "entity-1",
+            "service": "app",
+            "productSku": "app-credits",
+            "planSku": "app-credit-unit",
+            "amountCurrency": "usd",
+            "amountMinor": "1000",
+            "sourceChargeAmountMinor": "1021",
+            "chargeAmountMinor": "919",
+            "region": "eu",
+            "country": "PL",
+            "language": "pl",
+            "termsVersion": "terms-v1",
+            "copyVersion": "2026-10-04.2",
+            "termsCollected": "true",
+            "ipCountry": "PL",
+            "countryPinned": "true"
+          }
+        }
+      ]
+    },
+    {
+      "call": "customers.retrieve",
+      "args": [
+        "cus_1"
+      ]
+    },
+    {
+      "call": "prices.list",
+      "args": [
+        {
+          "product": "app-plans",
+          "active": true,
+          "lookup_keys": [
+            "pro-monthly"
+          ]
+        }
+      ]
+    },
+    {
+      "call": "checkout.sessions.create",
+      "args": [
+        {
+          "mode": "subscription",
+          "line_items": [
+            {
+              "price": "price_pro",
+              "quantity": 1
+            }
+          ],
+          "currency": "eur",
+          "payment_method_types": [
+            "card",
+            "link",
+            "klarna"
+          ],
+          "custom_text": {
+            "submit": {
+              "message": "18,00 € + VAT miesięcznie. Odnawia się co miesiąc do czasu wypowiedzenia; możesz wypowiedzieć w dowolnym momencie ze skutkiem na koniec okresu rozliczeniowego."
+            },
+            "after_submit": {
+              "message": "Możesz wypowiedzieć w dowolnym momencie: [Wypowiedz umowę tutaj](https://app.example.com/legal/cancel)"
+            },
+            "terms_of_service_acceptance": {
+              "message": "Akceptuję [Regulamin płatności](https://legal.example.com/pl/billing) i potwierdzam zapoznanie się z [pouczeniem o odstąpieniu od umowy](https://legal.example.com/pl/withdrawal)."
+            }
+          },
+          "subscription_data": {
+            "metadata": {
+              "pricingMode": "quantity",
+              "entityId": "entity-1",
+              "service": "app",
+              "productSku": "app-plans",
+              "planSku": "pro-monthly",
+              "region": "eu",
+              "country": "PL",
+              "language": "pl",
+              "termsVersion": "terms-v1",
+              "copyVersion": "2026-10-04.2",
+              "termsCollected": "true",
+              "startRequestId": "payment-consumer-consent-1",
+              "countryPinned": "true"
+            }
+          },
+          "automatic_tax": {
+            "enabled": true
+          },
+          "billing_address_collection": "auto",
+          "tax_id_collection": {
+            "enabled": true
+          },
+          "customer_update": {
+            "address": "never",
+            "name": "auto"
+          },
+          "adaptive_pricing": {
+            "enabled": true
+          },
+          "allow_promotion_codes": true,
+          "consent_collection": {
+            "terms_of_service": "required"
+          },
+          "expires_at": 1793617200,
+          "customer": "cus_1",
+          "success_url": "https://app.example.com/billing/ok",
+          "cancel_url": "https://app.example.com/billing/cancel",
+          "metadata": {
+            "pricingMode": "quantity",
+            "currency": "usd",
+            "entityId": "entity-1",
+            "service": "app",
+            "productSku": "app-plans",
+            "planSku": "pro-monthly",
+            "region": "eu",
+            "country": "PL",
+            "language": "pl",
+            "termsVersion": "terms-v1",
+            "copyVersion": "2026-10-04.2",
+            "termsCollected": "true",
+            "startRequestId": "payment-consumer-consent-1",
+            "countryPinned": "true"
+          }
+        }
+      ]
+    },
+    {
+      "call": "customers.create",
+      "args": [
+        {
+          "metadata": {
+            "entityId": "entity-us",
+            "service": "app"
+          },
+          "email": "buyer@shop.us"
+        }
+      ]
+    },
+    {
+      "call": "customers.update",
+      "args": [
+        "cus_4",
+        {
+          "address": {
+            "country": "US",
+            "line1": "",
+            "line2": "",
+            "city": "",
+            "state": "",
+            "postal_code": ""
+          }
+        }
+      ]
+    },
+    {
+      "call": "prices.list",
+      "args": [
+        {
+          "product": "app-plans",
+          "active": true,
+          "lookup_keys": [
+            "pro-monthly"
+          ]
+        }
+      ]
+    },
+    {
+      "call": "checkout.sessions.create",
+      "args": [
+        {
+          "mode": "subscription",
+          "line_items": [
+            {
+              "price": "price_pro",
+              "quantity": 1
+            }
+          ],
+          "currency": "usd",
+          "payment_method_types": [
+            "card",
+            "link"
+          ],
+          "custom_text": {
+            "submit": {
+              "message": "$20.00 plus VAT per month. Renews monthly until cancelled; cancel any time, effective at the end of the billing period."
+            },
+            "after_submit": {
+              "message": "Cancel any time: [Cancel contracts here](https://app.example.com/legal/cancel)"
+            },
+            "terms_of_service_acceptance": {
+              "message": "I agree to the [Billing Terms](https://legal.example.com/en/billing)."
+            }
+          },
+          "subscription_data": {
+            "metadata": {
+              "pricingMode": "quantity",
+              "entityId": "entity-us",
+              "service": "app",
+              "productSku": "app-plans",
+              "planSku": "pro-monthly",
+              "region": "other",
+              "country": "US",
+              "language": "en",
+              "termsVersion": "terms-v1",
+              "copyVersion": "2026-10-04.2",
+              "termsCollected": "true",
+              "startRequestId": "payment-consumer-consent-2"
+            }
+          },
+          "automatic_tax": {
+            "enabled": true
+          },
+          "billing_address_collection": "required",
+          "tax_id_collection": {
+            "enabled": true
+          },
+          "customer_update": {
+            "address": "auto",
+            "name": "auto"
+          },
+          "adaptive_pricing": {
+            "enabled": false
+          },
+          "allow_promotion_codes": true,
+          "consent_collection": {
+            "terms_of_service": "required"
+          },
+          "expires_at": 1793617200,
+          "customer": "cus_4",
+          "success_url": "https://app.example.com/billing/ok",
+          "cancel_url": "https://app.example.com/billing/ok",
+          "metadata": {
+            "pricingMode": "quantity",
+            "currency": "usd",
+            "entityId": "entity-us",
+            "service": "app",
+            "productSku": "app-plans",
+            "planSku": "pro-monthly",
+            "region": "other",
+            "country": "US",
+            "language": "en",
+            "termsVersion": "terms-v1",
+            "copyVersion": "2026-10-04.2",
+            "termsCollected": "true",
+            "startRequestId": "payment-consumer-consent-2"
+          }
+        }
+      ]
+    },
+    {
+      "call": "customers.retrieve",
+      "args": [
+        "cus_1"
+      ]
+    },
+    {
+      "call": "prices.list",
+      "args": [
+        {
+          "product": "app-seats",
+          "active": true,
+          "lookup_keys": [
+            "app-seats-consumable"
+          ]
+        }
+      ]
+    },
+    {
+      "call": "checkout.sessions.create",
+      "args": [
+        {
+          "mode": "payment",
+          "line_items": [
+            {
+              "price": "price_seats",
+              "adjustable_quantity": {
+                "enabled": true,
+                "minimum": 1,
+                "maximum": 50
+              },
+              "quantity": 5
+            }
+          ],
+          "invoice_creation": {
+            "enabled": true
+          },
+          "automatic_tax": {
+            "enabled": true
+          },
+          "billing_address_collection": "auto",
+          "tax_id_collection": {
+            "enabled": true
+          },
+          "customer_update": {
+            "address": "never",
+            "name": "auto"
+          },
+          "adaptive_pricing": {
+            "enabled": false
+          },
+          "allow_promotion_codes": true,
+          "consent_collection": {
+            "terms_of_service": "required"
+          },
+          "custom_text": {
+            "terms_of_service_acceptance": {
+              "message": "Akceptuję [Regulamin płatności](https://legal.example.com/pl/billing) i potwierdzam zapoznanie się z [pouczeniem o odstąpieniu od umowy](https://legal.example.com/pl/withdrawal)."
+            }
+          },
+          "expires_at": 1793617200,
+          "customer": "cus_1",
+          "success_url": "https://app.example.com/billing/ok",
+          "cancel_url": "https://app.example.com/billing/ok",
+          "metadata": {
+            "pricingMode": "quantity",
+            "currency": "usd",
+            "entityId": "entity-1",
+            "service": "app",
+            "productSku": "app-seats",
+            "planSku": "seat-pack",
+            "region": "eu",
+            "country": "PL",
+            "language": "pl",
+            "termsVersion": "terms-v1",
+            "copyVersion": "2026-10-04.2",
+            "termsCollected": "true",
+            "countryPinned": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "admitted": [
+    {
+      "entityId": "entity-1",
+      "productSku": "app-credits",
+      "planSku": "app-credit-unit",
+      "at": "2026-11-02T10:00:00.000Z",
+      "sessionTtlSeconds": 3600,
+      "expiresAt": "2026-11-02T11:00:00.000Z",
+      "mode": "amount",
+      "amountMinor": 1000,
+      "amountCurrency": "usd",
+      "chargeMinor": 919,
+      "currency": "eur"
+    },
+    {
+      "entityId": "entity-1",
+      "productSku": "app-plans",
+      "planSku": "pro-monthly",
+      "at": "2026-11-02T10:00:00.000Z",
+      "sessionTtlSeconds": 3600,
+      "expiresAt": "2026-11-02T11:00:00.000Z",
+      "mode": "subscription",
+      "currency": "eur"
+    },
+    {
+      "entityId": "entity-us",
+      "productSku": "app-plans",
+      "planSku": "pro-monthly",
+      "at": "2026-11-02T10:00:00.000Z",
+      "sessionTtlSeconds": 3600,
+      "expiresAt": "2026-11-02T11:00:00.000Z",
+      "mode": "subscription",
+      "currency": "usd"
+    },
+    {
+      "entityId": "entity-1",
+      "productSku": "app-seats",
+      "planSku": "seat-pack",
+      "at": "2026-11-02T10:00:00.000Z",
+      "sessionTtlSeconds": 3600,
+      "expiresAt": "2026-11-02T11:00:00.000Z",
+      "mode": "quantity",
+      "currency": "usd"
+    }
+  ],
+  "created": [
+    {
+      "entityId": "entity-1",
+      "productSku": "app-credits",
+      "planSku": "app-credit-unit",
+      "at": "2026-11-02T10:00:00.000Z",
+      "sessionTtlSeconds": 3600,
+      "expiresAt": "2026-11-02T11:00:00.000Z",
+      "mode": "amount",
+      "amountMinor": 1000,
+      "amountCurrency": "usd",
+      "chargeMinor": 919,
+      "currency": "eur",
+      "sessionId": "cs_2",
+      "url": "https://checkout.example.test/2",
+      "reservationId": "r-1"
+    },
+    {
+      "entityId": "entity-1",
+      "productSku": "app-plans",
+      "planSku": "pro-monthly",
+      "at": "2026-11-02T10:00:00.000Z",
+      "sessionTtlSeconds": 3600,
+      "expiresAt": "2026-11-02T11:00:00.000Z",
+      "mode": "subscription",
+      "currency": "eur",
+      "sessionId": "cs_3",
+      "url": "https://checkout.example.test/3",
+      "reservationId": "r-2"
+    },
+    {
+      "entityId": "entity-us",
+      "productSku": "app-plans",
+      "planSku": "pro-monthly",
+      "at": "2026-11-02T10:00:00.000Z",
+      "sessionTtlSeconds": 3600,
+      "expiresAt": "2026-11-02T11:00:00.000Z",
+      "mode": "subscription",
+      "currency": "usd",
+      "sessionId": "cs_5",
+      "url": "https://checkout.example.test/5",
+      "reservationId": "r-3"
+    },
+    {
+      "entityId": "entity-1",
+      "productSku": "app-seats",
+      "planSku": "seat-pack",
+      "at": "2026-11-02T10:00:00.000Z",
+      "sessionTtlSeconds": 3600,
+      "expiresAt": "2026-11-02T11:00:00.000Z",
+      "mode": "quantity",
+      "currency": "usd",
+      "sessionId": "cs_6",
+      "url": "https://checkout.example.test/6",
+      "reservationId": "r-4"
+    }
+  ],
+  "customers": [
+    {
+      "paygate": "stripe",
+      "externalId": "cus_1",
+      "entityId": "entity-1",
+      "id": "payment-paygate-customer-1"
+    },
+    {
+      "paygate": "stripe",
+      "externalId": "cus_4",
+      "entityId": "entity-us",
+      "id": "payment-paygate-customer-2"
+    }
+  ]
+}

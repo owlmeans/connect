@@ -1,0 +1,1056 @@
+{
+  "errors": {},
+  "unknownPaygate": {
+    "error": "UnknownPaygate:payment:paygate:unknown:paypal"
+  },
+  "badSignature": {
+    "error": "PaygateSignatureError:payment:paygate:signature"
+  },
+  "calls": [
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_customer\",\"object\":\"event\",\"type\":\"customer.created\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"cus_1\",\"object\":\"customer\",\"email\":\"buyer@shop.eu\",\"name\":\"Jan Kowalski\",\"address\":{\"country\":\"pl\"},\"currency\":\"EUR\",\"metadata\":{\"entityId\":\"entity-1\",\"profileId\":\"profile-1\"},\"tax_ids\":{\"data\":[{\"value\":\"PL1234567890\"}]}}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_paid\",\"object\":\"event\",\"type\":\"checkout.session.completed\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"cs_pl\",\"object\":\"checkout.session\",\"mode\":\"payment\",\"payment_status\":\"paid\",\"status\":\"complete\",\"customer\":\"cus_1\",\"currency\":\"eur\",\"amount_subtotal\":919,\"amount_total\":1130,\"total_details\":{\"amount_tax\":211},\"payment_intent\":\"pi_pl\",\"invoice\":\"in_pl\",\"created\":1793613600,\"customer_details\":{\"address\":{\"country\":\"PL\"},\"email\":\"buyer@shop.eu\",\"name\":\"Jan Kowalski\",\"tax_ids\":[],\"tax_exempt\":\"none\"},\"consent\":{\"terms_of_service\":\"accepted\"},\"metadata\":{\"pricingMode\":\"amount\",\"amountMinor\":\"1000\",\"sourceChargeAmountMinor\":\"1021\",\"amountCurrency\":\"usd\",\"chargeAmountMinor\":\"919\",\"currency\":\"eur\",\"entityId\":\"entity-1\",\"service\":\"app\",\"productSku\":\"app-credits\",\"planSku\":\"app-credit-unit\",\"country\":\"PL\",\"language\":\"pl\",\"termsVersion\":\"terms-v1\",\"ipCountry\":\"PL\"}}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "invoices.retrieve",
+      "args": [
+        "in_pl"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_paid\",\"object\":\"event\",\"type\":\"checkout.session.completed\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"cs_pl\",\"object\":\"checkout.session\",\"mode\":\"payment\",\"payment_status\":\"paid\",\"status\":\"complete\",\"customer\":\"cus_1\",\"currency\":\"eur\",\"amount_subtotal\":919,\"amount_total\":1130,\"total_details\":{\"amount_tax\":211},\"payment_intent\":\"pi_pl\",\"invoice\":\"in_pl\",\"created\":1793613600,\"customer_details\":{\"address\":{\"country\":\"PL\"},\"email\":\"buyer@shop.eu\",\"name\":\"Jan Kowalski\",\"tax_ids\":[],\"tax_exempt\":\"none\"},\"consent\":{\"terms_of_service\":\"accepted\"},\"metadata\":{\"pricingMode\":\"amount\",\"amountMinor\":\"1000\",\"sourceChargeAmountMinor\":\"1021\",\"amountCurrency\":\"usd\",\"chargeAmountMinor\":\"919\",\"currency\":\"eur\",\"entityId\":\"entity-1\",\"service\":\"app\",\"productSku\":\"app-credits\",\"planSku\":\"app-credit-unit\",\"country\":\"PL\",\"language\":\"pl\",\"termsVersion\":\"terms-v1\",\"ipCountry\":\"PL\"}}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_sub_created\",\"object\":\"event\",\"type\":\"customer.subscription.created\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"sub_1\",\"object\":\"subscription\",\"customer\":\"cus_1\",\"status\":\"active\",\"metadata\":{\"entityId\":\"entity-1\",\"planSku\":\"pro-monthly\",\"productSku\":\"app-plans\",\"service\":\"app\",\"startRequestId\":\"payment-consumer-consent-1\",\"country\":\"PL\",\"language\":\"pl\",\"termsVersion\":\"terms-v1\",\"ipCountry\":\"PL\"},\"items\":{\"object\":\"list\",\"has_more\":false,\"url\":\"\",\"data\":[{\"id\":\"si_1\",\"price\":{\"id\":\"price_pro-monthly\",\"lookup_key\":\"pro-monthly\",\"unit_amount\":1800},\"quantity\":1}]},\"current_period_start\":1793527200,\"current_period_end\":1796119200,\"cancel_at_period_end\":false,\"canceled_at\":null,\"ended_at\":null,\"pause_collection\":null,\"trial_end\":null,\"latest_invoice\":\"in_sub\",\"created\":1793527200,\"default_payment_method\":\"pm_1\",\"currency\":\"eur\"}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "invoices.retrieve",
+      "args": [
+        "in_sub"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_sub_checkout\",\"object\":\"event\",\"type\":\"checkout.session.completed\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"cs_sub\",\"object\":\"checkout.session\",\"mode\":\"subscription\",\"payment_status\":\"paid\",\"status\":\"complete\",\"customer\":\"cus_1\",\"subscription\":\"sub_1\",\"invoice\":\"in_sub\",\"currency\":\"eur\",\"amount_subtotal\":1800,\"amount_total\":2214,\"total_details\":{\"amount_tax\":414},\"customer_details\":{\"address\":{\"country\":\"PL\"},\"email\":\"buyer@shop.eu\",\"name\":\"Jan Kowalski\",\"tax_ids\":[],\"tax_exempt\":\"none\"},\"consent\":{\"terms_of_service\":\"accepted\"},\"created\":1793613600,\"metadata\":{\"entityId\":\"entity-1\",\"service\":\"app\",\"productSku\":\"app-plans\",\"planSku\":\"pro-monthly\",\"pricingMode\":\"quantity\",\"country\":\"PL\",\"language\":\"pl\",\"termsVersion\":\"terms-v1\",\"startRequestId\":\"payment-consumer-consent-1\"}}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_renewal\",\"object\":\"event\",\"type\":\"invoice.paid\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"in_cycle\",\"object\":\"invoice\",\"billing_reason\":\"subscription_cycle\",\"subscription\":\"sub_1\",\"customer\":\"cus_1\"}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "subscriptions.retrieve",
+      "args": [
+        "sub_1"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_invoice_manual\",\"object\":\"event\",\"type\":\"invoice.paid\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"in_manual\",\"object\":\"invoice\",\"billing_reason\":\"manual\",\"subscription\":\"sub_1\",\"customer\":\"cus_1\"}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_invoice_failed\",\"object\":\"event\",\"type\":\"invoice.payment_failed\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"in_fail\",\"object\":\"invoice\",\"subscription\":\"sub_1\",\"customer\":\"cus_1\",\"attempt_count\":2,\"next_payment_attempt\":1793872800}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "subscriptions.retrieve",
+      "args": [
+        "sub_1"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_invoice_action\",\"object\":\"event\",\"type\":\"invoice.payment_action_required\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"in_action\",\"object\":\"invoice\",\"subscription\":\"sub_1\",\"customer\":\"cus_1\",\"attempt_count\":1}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "subscriptions.retrieve",
+      "args": [
+        "sub_1"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_sub_cancel_scheduled\",\"object\":\"event\",\"type\":\"customer.subscription.updated\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"sub_1\",\"object\":\"subscription\",\"customer\":\"cus_1\",\"status\":\"active\",\"metadata\":{\"entityId\":\"entity-1\",\"planSku\":\"pro-monthly\",\"productSku\":\"app-plans\",\"service\":\"app\",\"startRequestId\":\"payment-consumer-consent-1\",\"country\":\"PL\",\"language\":\"pl\",\"termsVersion\":\"terms-v1\",\"ipCountry\":\"PL\"},\"items\":{\"object\":\"list\",\"has_more\":false,\"url\":\"\",\"data\":[{\"id\":\"si_1\",\"price\":{\"id\":\"price_pro-monthly\",\"lookup_key\":\"pro-monthly\",\"unit_amount\":1800},\"quantity\":1}]},\"current_period_start\":1793527200,\"current_period_end\":1796119200,\"cancel_at_period_end\":true,\"canceled_at\":null,\"ended_at\":null,\"pause_collection\":null,\"trial_end\":null,\"latest_invoice\":\"in_sub\",\"created\":1793527200,\"default_payment_method\":\"pm_1\",\"currency\":\"eur\"}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_charge_refunded\",\"object\":\"event\",\"type\":\"charge.refunded\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"ch_pl\",\"object\":\"charge\",\"payment_intent\":\"pi_pl\",\"invoice\":\"in_pl\",\"amount\":1130,\"amount_refunded\":500}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "refunds.list",
+      "args": [
+        {
+          "charge": "ch_pl",
+          "limit": 100
+        }
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_refund_updated\",\"object\":\"event\",\"type\":\"refund.updated\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"re_w\",\"object\":\"refund\",\"charge\":\"ch_pl\",\"payment_intent\":\"pi_pl\",\"amount\":100,\"currency\":\"eur\",\"status\":\"succeeded\",\"metadata\":{\"withdrawalId\":\"w-1\",\"owlmeans\":\"payment\"}}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "charges.retrieve",
+      "args": [
+        "ch_pl"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_refund_failed\",\"object\":\"event\",\"type\":\"refund.failed\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"re_f\",\"object\":\"refund\",\"status\":\"failed\",\"amount\":100}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_dispute_opened\",\"object\":\"event\",\"type\":\"charge.dispute.created\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"dp_1\",\"object\":\"dispute\",\"charge\":\"ch_sub\",\"payment_intent\":\"pi_sub\",\"amount\":2214,\"currency\":\"eur\",\"status\":\"needs_response\"}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "charges.retrieve",
+      "args": [
+        "ch_sub"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_dispute_closed\",\"object\":\"event\",\"type\":\"charge.dispute.closed\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"dp_1\",\"object\":\"dispute\",\"charge\":\"ch_sub\",\"payment_intent\":\"pi_sub\",\"amount\":2214,\"currency\":\"eur\",\"status\":\"won\"}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "charges.retrieve",
+      "args": [
+        "ch_sub"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_async_failed\",\"object\":\"event\",\"type\":\"checkout.session.async_payment_failed\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"cs_fail\",\"object\":\"checkout.session\",\"mode\":\"payment\",\"customer\":\"cus_1\",\"payment_intent\":\"pi_fail\",\"metadata\":{\"entityId\":\"entity-1\",\"service\":\"app\",\"productSku\":\"app-credits\",\"planSku\":\"app-credit-unit\",\"pricingMode\":\"amount\",\"amountMinor\":\"2000\"}}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_expired\",\"object\":\"event\",\"type\":\"checkout.session.expired\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"cs_exp\",\"object\":\"checkout.session\",\"mode\":\"payment\",\"customer\":\"cus_1\",\"metadata\":{\"entityId\":\"entity-1\",\"service\":\"app\",\"productSku\":\"app-credits\",\"planSku\":\"app-credit-unit\",\"amountMinor\":\"500\"}}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_voided\",\"object\":\"event\",\"type\":\"invoice.voided\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"in_void\",\"object\":\"invoice\",\"subscription\":\"sub_1\",\"customer\":\"cus_1\"}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "subscriptions.retrieve",
+      "args": [
+        "sub_1"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_upcoming\",\"object\":\"event\",\"type\":\"invoice.upcoming\",\"created\":1793613600,\"data\":{\"object\":{\"object\":\"invoice\",\"subscription\":\"sub_1\",\"customer\":\"cus_1\"}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_ignored\",\"object\":\"event\",\"type\":\"product.created\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"prod_x\",\"object\":\"product\"}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_sub_deleted\",\"object\":\"event\",\"type\":\"customer.subscription.deleted\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"sub_1\",\"object\":\"subscription\",\"customer\":\"cus_1\",\"status\":\"canceled\",\"metadata\":{\"entityId\":\"entity-1\",\"planSku\":\"pro-monthly\",\"productSku\":\"app-plans\",\"service\":\"app\",\"startRequestId\":\"payment-consumer-consent-1\",\"country\":\"PL\",\"language\":\"pl\",\"termsVersion\":\"terms-v1\",\"ipCountry\":\"PL\"},\"items\":{\"object\":\"list\",\"has_more\":false,\"url\":\"\",\"data\":[{\"id\":\"si_1\",\"price\":{\"id\":\"price_pro-monthly\",\"lookup_key\":\"pro-monthly\",\"unit_amount\":1800},\"quantity\":1}]},\"current_period_start\":1793527200,\"current_period_end\":1796119200,\"cancel_at_period_end\":true,\"canceled_at\":null,\"ended_at\":1793613600,\"pause_collection\":null,\"trial_end\":null,\"latest_invoice\":\"in_sub\",\"created\":1793527200,\"default_payment_method\":\"pm_1\",\"currency\":\"eur\"}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{\"id\":\"evt_customer_deleted\",\"object\":\"event\",\"type\":\"customer.deleted\",\"created\":1793613600,\"data\":{\"object\":{\"id\":\"cus_1\",\"object\":\"customer\",\"deleted\":true}}}",
+        "sig:whsec_golden",
+        "whsec_golden"
+      ]
+    },
+    {
+      "call": "webhooks.constructEventAsync",
+      "args": [
+        "{}",
+        "sig:other",
+        "whsec_golden"
+      ]
+    }
+  ],
+  "settled": [
+    {
+      "entityId": "entity-1",
+      "productSku": "app-credits",
+      "planSku": "app-credit-unit",
+      "sessionId": "cs_pl",
+      "outcome": "paid",
+      "amountMinor": 1000,
+      "at": "2026-11-02T10:00:00.000Z"
+    },
+    {
+      "entityId": "entity-1",
+      "productSku": "app-credits",
+      "planSku": "app-credit-unit",
+      "sessionId": "cs_pl",
+      "outcome": "paid",
+      "amountMinor": 1000,
+      "at": "2026-11-02T10:00:00.000Z"
+    },
+    {
+      "entityId": "entity-1",
+      "productSku": "app-plans",
+      "planSku": "pro-monthly",
+      "sessionId": "cs_sub",
+      "outcome": "paid",
+      "at": "2026-11-02T10:00:00.000Z"
+    },
+    {
+      "entityId": "entity-1",
+      "productSku": "app-credits",
+      "planSku": "app-credit-unit",
+      "sessionId": "cs_fail",
+      "outcome": "failed",
+      "amountMinor": 2000,
+      "at": "2026-11-02T10:00:00.000Z"
+    },
+    {
+      "entityId": "entity-1",
+      "productSku": "app-credits",
+      "planSku": "app-credit-unit",
+      "sessionId": "cs_exp",
+      "outcome": "expired",
+      "amountMinor": 500,
+      "at": "2026-11-02T10:00:00.000Z"
+    }
+  ],
+  "observed": {
+    "topUp": [
+      {
+        "entityId": "entity-1",
+        "productSku": "app-credits",
+        "planSku": "app-credit-unit",
+        "service": "app",
+        "paygate": "stripe",
+        "externalId": "cs_pl",
+        "mode": "amount",
+        "amountMinor": 1000,
+        "sourceChargeAmountMinor": 1021,
+        "amountCurrency": "usd",
+        "chargeAmountMinor": 919,
+        "currency": "eur"
+      }
+    ],
+    "subscription": [
+      {
+        "change": "created",
+        "previous": null,
+        "current": {
+          "entityId": "entity-1",
+          "planSku": "pro-monthly",
+          "productSku": "app-plans",
+          "rank": 10,
+          "status": "active",
+          "paygate": "stripe",
+          "subscriptionId": "sub_1",
+          "service": "app",
+          "periodStart": "2026-11-01T10:00:00.000Z",
+          "periodEnd": "2026-12-01T10:00:00.000Z",
+          "cancelAtPeriodEnd": false,
+          "createdAt": "2026-11-01T10:00:00.000Z",
+          "capabilities": [
+            {
+              "scope": "feature",
+              "permissions": {
+                "basic": true,
+                "whitelabel": true,
+                "preview": true
+              }
+            }
+          ],
+          "limits": {
+            "seats": {
+              "kind": "occupancy",
+              "limit": 2
+            },
+            "exports": {
+              "kind": "window",
+              "window": "day",
+              "limit": 3
+            },
+            "reports": {
+              "kind": "lifetime",
+              "limit": 4,
+              "promo": {
+                "until": "2026-12-02T10:00:00.000Z",
+                "grandfather": true
+              }
+            }
+          }
+        },
+        "active": true,
+        "eventKey": "subscription:sub_1:created:2026-11-01T10:00:00.000Z",
+        "externalEventId": "evt_sub_created"
+      },
+      {
+        "change": "renewed",
+        "previous": {
+          "entityId": "entity-1",
+          "planSku": "pro-monthly",
+          "productSku": "app-plans",
+          "rank": 10,
+          "status": "active",
+          "paygate": "stripe",
+          "subscriptionId": "sub_1",
+          "service": "app",
+          "periodStart": "2026-11-01T10:00:00.000Z",
+          "periodEnd": "2026-12-01T10:00:00.000Z",
+          "cancelAtPeriodEnd": false,
+          "createdAt": "2026-11-01T10:00:00.000Z",
+          "capabilities": [
+            {
+              "scope": "feature",
+              "permissions": {
+                "basic": true,
+                "whitelabel": true,
+                "preview": true
+              }
+            }
+          ],
+          "limits": {
+            "seats": {
+              "kind": "occupancy",
+              "limit": 2
+            },
+            "exports": {
+              "kind": "window",
+              "window": "day",
+              "limit": 3
+            },
+            "reports": {
+              "kind": "lifetime",
+              "limit": 4,
+              "promo": {
+                "until": "2026-12-02T10:00:00.000Z",
+                "grandfather": true
+              }
+            }
+          }
+        },
+        "current": {
+          "entityId": "entity-1",
+          "planSku": "pro-monthly",
+          "productSku": "app-plans",
+          "rank": 10,
+          "status": "active",
+          "paygate": "stripe",
+          "subscriptionId": "sub_1",
+          "service": "app",
+          "periodStart": "2026-11-01T10:00:00.000Z",
+          "periodEnd": "2026-12-01T10:00:00.000Z",
+          "cancelAtPeriodEnd": false,
+          "createdAt": "2026-11-01T10:00:00.000Z",
+          "capabilities": [
+            {
+              "scope": "feature",
+              "permissions": {
+                "basic": true,
+                "whitelabel": true,
+                "preview": true
+              }
+            }
+          ],
+          "limits": {
+            "seats": {
+              "kind": "occupancy",
+              "limit": 2
+            },
+            "exports": {
+              "kind": "window",
+              "window": "day",
+              "limit": 3
+            },
+            "reports": {
+              "kind": "lifetime",
+              "limit": 4,
+              "promo": {
+                "until": "2026-12-02T10:00:00.000Z",
+                "grandfather": true
+              }
+            }
+          }
+        },
+        "active": true,
+        "eventKey": "subscription:sub_1:renewed:in_cycle",
+        "invoiceId": "in_cycle",
+        "externalEventId": "evt_renewal"
+      },
+      {
+        "change": "cancel-scheduled",
+        "previous": {
+          "entityId": "entity-1",
+          "planSku": "pro-monthly",
+          "productSku": "app-plans",
+          "rank": 10,
+          "status": "active",
+          "paygate": "stripe",
+          "subscriptionId": "sub_1",
+          "service": "app",
+          "periodStart": "2026-11-01T10:00:00.000Z",
+          "periodEnd": "2026-12-01T10:00:00.000Z",
+          "cancelAtPeriodEnd": false,
+          "createdAt": "2026-11-01T10:00:00.000Z",
+          "capabilities": [
+            {
+              "scope": "feature",
+              "permissions": {
+                "basic": true,
+                "whitelabel": true,
+                "preview": true
+              }
+            }
+          ],
+          "limits": {
+            "seats": {
+              "kind": "occupancy",
+              "limit": 2
+            },
+            "exports": {
+              "kind": "window",
+              "window": "day",
+              "limit": 3
+            },
+            "reports": {
+              "kind": "lifetime",
+              "limit": 4,
+              "promo": {
+                "until": "2026-12-02T10:00:00.000Z",
+                "grandfather": true
+              }
+            }
+          }
+        },
+        "current": {
+          "entityId": "entity-1",
+          "planSku": "pro-monthly",
+          "productSku": "app-plans",
+          "rank": 10,
+          "status": "active",
+          "paygate": "stripe",
+          "subscriptionId": "sub_1",
+          "service": "app",
+          "periodStart": "2026-11-01T10:00:00.000Z",
+          "periodEnd": "2026-12-01T10:00:00.000Z",
+          "cancelAtPeriodEnd": true,
+          "createdAt": "2026-11-01T10:00:00.000Z",
+          "capabilities": [
+            {
+              "scope": "feature",
+              "permissions": {
+                "basic": true,
+                "whitelabel": true,
+                "preview": true
+              }
+            }
+          ],
+          "limits": {
+            "seats": {
+              "kind": "occupancy",
+              "limit": 2
+            },
+            "exports": {
+              "kind": "window",
+              "window": "day",
+              "limit": 3
+            },
+            "reports": {
+              "kind": "lifetime",
+              "limit": 4,
+              "promo": {
+                "until": "2026-12-02T10:00:00.000Z",
+                "grandfather": true
+              }
+            }
+          }
+        },
+        "active": true,
+        "eventKey": "subscription:sub_1:cancel-scheduled:evt_sub_cancel_scheduled",
+        "externalEventId": "evt_sub_cancel_scheduled"
+      },
+      {
+        "change": "canceled",
+        "previous": {
+          "entityId": "entity-1",
+          "planSku": "pro-monthly",
+          "productSku": "app-plans",
+          "rank": 10,
+          "status": "active",
+          "paygate": "stripe",
+          "subscriptionId": "sub_1",
+          "service": "app",
+          "periodStart": "2026-11-01T10:00:00.000Z",
+          "periodEnd": "2026-12-01T10:00:00.000Z",
+          "cancelAtPeriodEnd": true,
+          "createdAt": "2026-11-01T10:00:00.000Z",
+          "capabilities": [
+            {
+              "scope": "feature",
+              "permissions": {
+                "basic": true,
+                "whitelabel": true,
+                "preview": true
+              }
+            }
+          ],
+          "limits": {
+            "seats": {
+              "kind": "occupancy",
+              "limit": 2
+            },
+            "exports": {
+              "kind": "window",
+              "window": "day",
+              "limit": 3
+            },
+            "reports": {
+              "kind": "lifetime",
+              "limit": 4,
+              "promo": {
+                "until": "2026-12-02T10:00:00.000Z",
+                "grandfather": true
+              }
+            }
+          }
+        },
+        "current": {
+          "entityId": "entity-1",
+          "planSku": "pro-monthly",
+          "productSku": "app-plans",
+          "rank": 10,
+          "status": "canceled",
+          "paygate": "stripe",
+          "subscriptionId": "sub_1",
+          "service": "app",
+          "periodStart": "2026-11-01T10:00:00.000Z",
+          "periodEnd": "2026-12-01T10:00:00.000Z",
+          "cancelAtPeriodEnd": true,
+          "createdAt": "2026-11-01T10:00:00.000Z",
+          "capabilities": [
+            {
+              "scope": "feature",
+              "permissions": {
+                "basic": true,
+                "whitelabel": true,
+                "preview": true
+              }
+            }
+          ],
+          "limits": {
+            "seats": {
+              "kind": "occupancy",
+              "limit": 2
+            },
+            "exports": {
+              "kind": "window",
+              "window": "day",
+              "limit": 3
+            },
+            "reports": {
+              "kind": "lifetime",
+              "limit": 4,
+              "promo": {
+                "until": "2026-12-02T10:00:00.000Z",
+                "grandfather": true
+              }
+            }
+          }
+        },
+        "active": false,
+        "eventKey": "subscription:sub_1:canceled:evt_sub_deleted",
+        "externalEventId": "evt_sub_deleted"
+      }
+    ],
+    "refund": [
+      {
+        "entityId": "entity-1",
+        "target": "fulfillment",
+        "productSku": "app-credits",
+        "planSku": "app-credit-unit",
+        "externalId": "cs_pl",
+        "netAmountMinor": 1000,
+        "chargeAmountMinor": 919,
+        "refundId": "re_1",
+        "paymentIntentId": "pi_pl",
+        "invoiceId": "in_pl",
+        "amountMinor": 500,
+        "refundedTotalMinor": 500,
+        "paidMinor": 1130,
+        "currency": "eur",
+        "partial": true,
+        "eventKey": "refund:re_1"
+      },
+      {
+        "entityId": "entity-1",
+        "target": "fulfillment",
+        "productSku": "app-credits",
+        "planSku": "app-credit-unit",
+        "externalId": "cs_pl",
+        "netAmountMinor": 1000,
+        "chargeAmountMinor": 919,
+        "refundId": "re_w",
+        "paymentIntentId": "pi_pl",
+        "invoiceId": "in_pl",
+        "amountMinor": 100,
+        "refundedTotalMinor": 600,
+        "paidMinor": 1130,
+        "currency": "eur",
+        "partial": true,
+        "eventKey": "refund:re_w",
+        "metadata": {
+          "withdrawalId": "w-1",
+          "owlmeans": "payment"
+        },
+        "withdrawalId": "w-1"
+      }
+    ],
+    "dispute": [
+      {
+        "entityId": "entity-1",
+        "target": "subscription",
+        "productSku": "app-plans",
+        "planSku": "pro-monthly",
+        "externalId": "sub_1",
+        "disputeId": "dp_1",
+        "phase": "opened",
+        "status": "needs_response",
+        "amountMinor": 2214,
+        "paidMinor": 2214,
+        "currency": "eur",
+        "eventKey": "dispute:dp_1:opened"
+      },
+      {
+        "entityId": "entity-1",
+        "target": "subscription",
+        "productSku": "app-plans",
+        "planSku": "pro-monthly",
+        "externalId": "sub_1",
+        "disputeId": "dp_1",
+        "phase": "closed",
+        "status": "won",
+        "amountMinor": 2214,
+        "paidMinor": 2214,
+        "currency": "eur",
+        "eventKey": "dispute:dp_1:closed"
+      }
+    ],
+    "paymentFailed": [
+      {
+        "entityId": "entity-1",
+        "kind": "invoice",
+        "externalId": "in_fail",
+        "subscriptionId": "sub_1",
+        "invoiceId": "in_fail",
+        "attempt": 2,
+        "actionRequired": false,
+        "nextAttemptAt": "2026-11-05T10:00:00.000Z",
+        "eventKey": "payment-failed:in_fail:2"
+      },
+      {
+        "entityId": "entity-1",
+        "kind": "invoice",
+        "externalId": "in_action",
+        "subscriptionId": "sub_1",
+        "invoiceId": "in_action",
+        "attempt": 1,
+        "actionRequired": true,
+        "eventKey": "payment-failed:in_action:1"
+      },
+      {
+        "entityId": "entity-1",
+        "kind": "checkout",
+        "externalId": "cs_fail",
+        "eventKey": "payment-failed:cs_fail:0"
+      }
+    ],
+    "consent": [
+      {
+        "kind": "subscription-start",
+        "consentId": "payment-consumer-consent-1",
+        "entityId": "entity-1",
+        "purchaseIds": [],
+        "planSku": "pro-monthly",
+        "textVersion": "terms-v1",
+        "language": "en",
+        "decidedAt": "2026-11-02T10:00:00.000Z",
+        "expiresAt": "2026-11-02T11:00:00.000Z",
+        "eventKey": "consent:payment-consumer-consent-1"
+      }
+    ],
+    "withdrawal": [],
+    "cancellation": [],
+    "grant": [],
+    "failSubscription": 0,
+    "failTopUp": 0,
+    "failWithdrawal": 0,
+    "failGrant": 0
+  },
+  "purchases": [
+    {
+      "purchaseId": "stripe:cs_pl",
+      "entityId": "entity-1",
+      "kind": "top-up",
+      "paygate": "stripe",
+      "sessionId": "cs_pl",
+      "paymentIntentId": "pi_pl",
+      "invoiceId": "in_pl",
+      "invoiceNumber": "INV-0001",
+      "invoiceLineId": "il_pl",
+      "productSku": "app-credits",
+      "planSku": "app-credit-unit",
+      "country": "PL",
+      "region": "eu",
+      "ipCountry": "PL",
+      "inScope": true,
+      "language": "pl",
+      "email": "buyer@shop.eu",
+      "name": "Jan Kowalski",
+      "currency": "eur",
+      "amountSubtotalMinor": 919,
+      "amountTaxMinor": 211,
+      "amountTotalMinor": 1130,
+      "netAmountMinor": 1000,
+      "amountCurrency": "usd",
+      "termsAccepted": true,
+      "textVersion": "terms-v1",
+      "copyVersion": "2026-10-04.2",
+      "purchasedAt": "2026-11-02T10:00:00.000Z",
+      "deadline": "2026-11-22T00:00:00.000Z",
+      "contractRef": "CR-<ref>",
+      "createdAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-purchase-1",
+      "confirmationMailAt": "2026-11-02T10:00:00.000Z",
+      "refundedMinor": 600,
+      "updatedAt": "2026-11-02T10:00:00.000Z"
+    },
+    {
+      "purchaseId": "stripe:sub_1",
+      "entityId": "entity-1",
+      "kind": "subscription",
+      "paygate": "stripe",
+      "subscriptionId": "sub_1",
+      "paymentIntentId": "pi_sub",
+      "invoiceId": "in_sub",
+      "invoiceNumber": "INV-0001",
+      "invoiceLineId": "il_sub",
+      "productSku": "app-plans",
+      "planSku": "pro-monthly",
+      "country": "PL",
+      "region": "eu",
+      "ipCountry": "PL",
+      "inScope": true,
+      "language": "pl",
+      "currency": "eur",
+      "amountSubtotalMinor": 1800,
+      "amountTaxMinor": 414,
+      "amountTotalMinor": 2214,
+      "textVersion": "terms-v1",
+      "copyVersion": "2026-10-04.2",
+      "startRequestId": "payment-consumer-consent-1",
+      "servicesStartedAt": "2026-11-02T10:00:00.000Z",
+      "consentId": "payment-consumer-consent-1",
+      "consentedAt": "2026-11-02T10:00:00.000Z",
+      "purchasedAt": "2026-11-01T10:00:00.000Z",
+      "deadline": "2026-11-22T00:00:00.000Z",
+      "contractRef": "CR-<ref>",
+      "createdAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-purchase-2",
+      "sessionId": "cs_sub",
+      "email": "buyer@shop.eu",
+      "name": "Jan Kowalski",
+      "termsAccepted": true,
+      "updatedAt": "2026-11-02T10:00:00.000Z",
+      "confirmationMailAt": "2026-11-02T10:00:00.000Z"
+    }
+  ],
+  "fulfillments": [
+    {
+      "entityId": "entity-1",
+      "productSku": "app-credits",
+      "planSku": "app-credit-unit",
+      "service": "app",
+      "paygate": "stripe",
+      "externalId": "cs_pl",
+      "mode": "amount",
+      "amountMinor": 1000,
+      "sourceChargeAmountMinor": 1021,
+      "amountCurrency": "usd",
+      "chargeAmountMinor": 919,
+      "currency": "eur",
+      "paymentIntentId": "pi_pl",
+      "invoiceId": "in_pl",
+      "country": "PL",
+      "email": "buyer@shop.eu",
+      "amountTotalMinor": 1130,
+      "amountTaxMinor": 211,
+      "termsAccepted": true,
+      "purchaseId": "stripe:cs_pl",
+      "createdAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-fulfillment-1",
+      "fulfilledAt": "2026-11-02T10:00:00.000Z",
+      "refundedMinor": 600,
+      "refundedAt": "2026-11-02T10:00:00.000Z",
+      "chargeId": "ch_pl"
+    },
+    {
+      "entityId": "entity-1",
+      "productSku": "app-credits",
+      "planSku": "app-credit-unit",
+      "service": "app",
+      "paygate": "stripe",
+      "externalId": "cs_fail",
+      "mode": "amount",
+      "paymentIntentId": "pi_fail",
+      "createdAt": "2026-11-02T10:00:00.000Z",
+      "failedAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-fulfillment-2"
+    }
+  ],
+  "subscriptions": [
+    {
+      "entityId": "entity-1",
+      "planSku": "pro-monthly",
+      "productSku": "app-plans",
+      "service": "app",
+      "paygate": "stripe",
+      "externalId": "sub_1",
+      "itemId": "si_1",
+      "priceId": "price_pro-monthly",
+      "status": "canceled",
+      "externalStatus": "canceled",
+      "rank": 10,
+      "periodStart": "2026-11-01T10:00:00.000Z",
+      "periodEnd": "2026-12-01T10:00:00.000Z",
+      "cancelAtPeriodEnd": true,
+      "latestInvoiceId": "in_sub",
+      "customerId": "cus_1",
+      "currency": "eur",
+      "createdAt": "2026-11-01T10:00:00.000Z",
+      "updatedAt": "2026-11-02T10:00:00.000Z",
+      "syncedAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-subscription-1",
+      "lastEventId": "evt_sub_deleted",
+      "propagated": {
+        "planSku": "pro-monthly",
+        "rank": 10,
+        "status": "canceled",
+        "cancelAtPeriodEnd": true,
+        "renewedInvoiceId": "in_cycle"
+      },
+      "initialPropagatedAt": "2026-11-02T10:00:00.000Z",
+      "checkoutSessionId": "cs_sub",
+      "purchaseId": "stripe:sub_1",
+      "firstInvoiceId": "in_sub",
+      "country": "PL",
+      "email": "buyer@shop.eu",
+      "amountTotalMinor": 2214,
+      "amountTaxMinor": 414,
+      "termsAccepted": true,
+      "startRequestId": "payment-consumer-consent-1",
+      "disputedAt": "2026-11-02T10:00:00.000Z",
+      "disputeStatus": "won",
+      "endedAt": "2026-11-02T10:00:00.000Z"
+    }
+  ],
+  "customers": [
+    {
+      "paygate": "stripe",
+      "externalId": "cus_1",
+      "email": "buyer@shop.eu",
+      "name": "Jan Kowalski",
+      "taxId": "PL1234567890",
+      "country": "PL",
+      "currency": "eur",
+      "entityId": "entity-1",
+      "profileId": "profile-1",
+      "id": "payment-paygate-customer-1",
+      "deletedAt": "2026-11-02T10:00:00.000Z"
+    }
+  ],
+  "profiles": [
+    {
+      "entityId": "entity-1",
+      "country": "PL",
+      "region": "eu",
+      "currency": "eur",
+      "language": "pl",
+      "source": "checkout",
+      "paygate": "stripe",
+      "customerId": "cus_1",
+      "sessionId": "cs_pl",
+      "ipCountry": "PL",
+      "email": "buyer@shop.eu",
+      "name": "Jan Kowalski",
+      "lockedAt": "2026-11-02T10:00:00.000Z",
+      "createdAt": "2026-11-02T10:00:00.000Z",
+      "id": "payment-billing-profile-1"
+    }
+  ],
+  "events": [
+    {
+      "recordId": "payment-consumer-consent-1",
+      "recordKind": "consent",
+      "entityId": "entity-1",
+      "action": "mail",
+      "step": "start",
+      "ok": true,
+      "detail": "{\"to\":\"owner@shop.eu\",\"subject\":\"Confirmation: your request to start the Pro services\"}",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-1"
+    },
+    {
+      "recordId": "payment-consumer-consent-1",
+      "recordKind": "consent",
+      "entityId": "entity-1",
+      "action": "observers",
+      "step": "consent",
+      "ok": true,
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-2"
+    },
+    {
+      "recordId": "entity-1",
+      "recordKind": "profile",
+      "entityId": "entity-1",
+      "action": "lock",
+      "ok": true,
+      "detail": "{\"source\":\"checkout\",\"country\":\"PL\",\"currency\":\"eur\",\"sessionId\":\"cs_pl\",\"ipCountry\":\"PL\",\"ipMismatch\":false}",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-3"
+    },
+    {
+      "recordId": "stripe:cs_pl",
+      "recordKind": "purchase",
+      "entityId": "entity-1",
+      "action": "mail",
+      "step": "purchase",
+      "ok": true,
+      "detail": "{\"to\":\"buyer@shop.eu\",\"subject\":\"Potwierdzenie zamówienia CR-<ref>\"}",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-4"
+    },
+    {
+      "recordId": "stripe:sub_1",
+      "recordKind": "purchase",
+      "entityId": "entity-1",
+      "action": "mail",
+      "step": "purchase",
+      "ok": true,
+      "detail": "{\"to\":\"buyer@shop.eu\",\"subject\":\"Potwierdzenie zamówienia CR-<ref>\"}",
+      "at": "2026-11-02T10:00:00.000Z",
+      "id": "payment-consumer-event-5"
+    }
+  ],
+  "mails": [
+    {
+      "to": "owner@shop.eu",
+      "subject": "Confirmation: your request to start the Pro services"
+    },
+    {
+      "to": "archive@example.com",
+      "subject": "Confirmation: your request to start the Pro services"
+    },
+    {
+      "to": "buyer@shop.eu",
+      "subject": "Potwierdzenie zamówienia CR-<ref>"
+    },
+    {
+      "to": "archive@example.com",
+      "subject": "Potwierdzenie zamówienia CR-<ref>"
+    },
+    {
+      "to": "buyer@shop.eu",
+      "subject": "Potwierdzenie zamówienia CR-<ref>"
+    },
+    {
+      "to": "archive@example.com",
+      "subject": "Potwierdzenie zamówienia CR-<ref>"
+    }
+  ]
+}
