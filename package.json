@@ -63,6 +63,17 @@
     "libraries/common/packages/test-integration",
     "libraries/common/packages/test-payment",
     "libraries/common/packages/web-captcha",
-    "libraries/common/packages/web-log"
+    "libraries/common/packages/web-log",
+    "libraries/common/packages/llm-reader",
+    "libraries/common/packages/package-inspector",
+    "libraries/common/packages/file-streams",
+    "libraries/common/packages/agent",
+    "libraries/common/packages/llm",
+    "libraries/common/packages/llm-common",
+    "libraries/common/packages/file-inspector",
+    "libraries/common/packages/storage-common",
+    "libraries/common/packages/storage-resource",
+    "libraries/common/packages/agent-common",
+    "libraries/common/packages/flow"
   ]
 }

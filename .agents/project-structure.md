@@ -11,6 +11,8 @@ and plugs into a provider-agnostic contract package of `common`.
 | `server-payment-stripe` | `server-payment` paygate registry (`appendStripeProvider`) | Stripe |
 | `mailer-mailgun` | `mailer` transport host (`appendMailgunMailer`) | Mailgun HTTP API |
 | `web-gtm` | `consent` signal-provider host (Consent Mode); `astro` head tag slot; `web-log` analytics gate (the tag-manager sink) | Google Tag Manager / Google tag / Consent Mode |
+| `package-registry-npm` | `package-inspector` `PackageRegistry` port and host (`appendNpmRegistry`) | npm registry, npm download counts API, GitHub / GitLab raw manifests |
+| `llm-reader-google-drive` | `llm-reader` `ReaderSource` seam (passed in `LlmReaderOptions.sources`; the reader has no source host) | Google Drive embedded folder view, usercontent downloads, Docs exports, Drive API v3 |
 
 Rules:
 
