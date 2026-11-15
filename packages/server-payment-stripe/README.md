@@ -11,7 +11,7 @@ webhook route — is `@owlmeans/server-payment`; this package only speaks Stripe
 ## Installation
 
 ```bash
-bun add @owlmeans/server-payment-stripe@^0.2.0-alpha.0
+bun add @owlmeans/server-payment-stripe@^0.2.0
 ```
 
 ## Usage
@@ -50,6 +50,32 @@ record.
 - **The pinned API version** — `2025-02-24.acacia`: the payload readers and the stored webhook
   endpoints depend on it; move it together with them.
 
+## API
+
+| Export | Description |
+|---|---|
+| `appendStripeProvider(ctx, options?)` | Register the provider in `ensurePaymentProviders(ctx)` of `@owlmeans/server-payment`; returns the context |
+| `makeStripeProvider({ client?, pricing? }?)` | The `PaymentProvider` (id `stripe`, `STRIPE_FEATURES`) without registering it; `bind(ctx)` answers a `StripePaygate` |
+| `stripeSecrets(cfg, { api, webhook? })` | The `_external:stripe` record: the API key and the optional webhook secret override (paths are read at boot) |
+| `portalBranding(cfg, { returnUrl, headline?, privacyPolicyUrl?, termsOfServiceUrl? })` | The `_external:stripe-portal` record of the managed customer portal configuration |
+| `declareStripePricing(cfg, def)` | The `_external:stripe-pricing` record: settlement currency, subscription payment methods, amount promotion codes, customer e-mail and country locks, the FX Quotes version, the unspecified-price migration switch |
+| `makeStripeAccess(ctx, options?)` | One context's client and declared settings: `stripe()`, `pricing()`, `secrets()`, `branding()` |
+| `makeStripeCustomers(ctx, access)`, `makeStripeCheckout(ctx, access)`, `makeStripeSubscriptions(access)`, `makeStripePayments(access)` | The paygate's customers, Checkout Sessions (`paramsOf`), subscriptions and charges, invoices, refunds and credit notes |
+| `makeStripeEvents(access, subscriptions, payments)`, `makeStripeWebhook(ctx, access, events)` | A Stripe event translated into host events; the managed webhook endpoint, its secrets and delivery verification |
+| `makeStripeCatalogue(access)`, `makeStripePortal(ctx, access)`, `makeStripeTax(access)`, `makeStripeFx(access)` | The catalogue sync, the customer portal, Stripe Tax estimates and FX Quotes |
+| `createStripeSessionHelper()`, `stripeSessionHelper` | Pure reads of a Checkout Session: `snapshotOf`, `isTaxLocatable`, `isMissingTermsUrl` |
+| `createStripeStatusHelper()`, `stripeStatusHelper` | A subscription's status in the host's terms: `mapStatus`, `isPaused` |
+| `createStripePricingHelper()`, `stripePricingHelper` | `normalize(def)` — the pricing settings lowercased and validated |
+| `createStripeUtils()`, `stripeUtils` | `apiVersionOf`, `isMissingObject`, `isAlreadyCanceled`, `isInvalidRequest`, `metadataMatches` |
+| `STRIPE_PAYGATE` | `'stripe'` |
+| `STRIPE_PLUGIN_CONFIG`, `STRIPE_PORTAL_PLUGIN_CONFIG`, `STRIPE_PRICING_PLUGIN_CONFIG` | `'_external:stripe'`, `'_external:stripe-portal'`, `'_external:stripe-pricing'` |
+| `STRIPE_PINNED_API_VERSION`, `STRIPE_FX_QUOTES_API_VERSION` | `'2025-02-24.acacia'`, `'2025-07-30.preview'` |
+| `STRIPE_FEATURES`, `STRIPE_SESSION_TTL_MIN_SECONDS`, `STRIPE_SESSION_TTL_MAX_SECONDS`, `STRIPE_CUSTOM_TEXT_MAX` | What a Checkout Session can carry: 30 min…24 h expiry, 1200-character custom texts |
+| `WEBHOOK_EVENTS`, `STRIPE_SIGNATURE` | The events the managed endpoint subscribes to; `'Stripe-Signature'` |
+| `STRIPE_OWNER_KEY`, `STRIPE_OWNER_VALUE`, `STRIPE_DEPLOYMENT_KEY`, `FINGERPRINT_PORTAL` | The metadata and fingerprint keys of the objects this package creates |
+| `StripeProviderOptions`, `StripeFactory`, `StripeSecretsDef`, `StripePluginConfig`, `StripePricingDef`, `StripePricingPluginConfig`, `PortalBrandingDef`, `PortalBrandingConfig` | Configuration types |
+| `StripePaygate`, `StripeAccess`, `StripeCustomers`, `StripeCheckout`, `StripeSubscriptions`, `StripePayments`, `StripeEvents`, `StripeWebhook`, `StripeCatalogue`, `StripePortal`, `StripeTax`, `StripeFx`, `StripeSessionHelper`, `StripeStatusHelper`, `StripePricingHelper`, `StripeUtils` | Capability and helper types |
+
 ## Testing
 
 `tests/fake-stripe.ts` is a recording fake Stripe SDK plus the `@owlmeans/test-payment` context with
@@ -73,7 +99,7 @@ This package ships embedded agent skills under `agent-meta/`. After installing y
 your project's skill store (`.agents/skills/`):
 
 ```sh
-npx @owlmeans/agent-skills@^0.2.0-alpha.0
+npx @owlmeans/agent-skills@^0.2.0
 ```
 
 The embedded files are version-matched to this package release. Do not edit them

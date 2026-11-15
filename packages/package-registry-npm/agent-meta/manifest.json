@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 3,
+  "package": "@owlmeans/package-registry-npm",
+  "version": "0.2.0",
+  "generatedAt": "2026-11-15T13:38:38.777Z",
+  "canonicalRepo": "https://github.com/owlmeans/connect",
+  "entries": [
+    {
+      "kind": "skill",
+      "name": "package-registry-npm",
+      "category": "package-specific",
+      "file": "skills/package-registry-npm/SKILL.md",
+      "canonicalPath": ".agents/skills/package-registry-npm/SKILL.md"
+    }
+  ]
+}

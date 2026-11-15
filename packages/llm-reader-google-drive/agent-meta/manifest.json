@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 3,
+  "package": "@owlmeans/llm-reader-google-drive",
+  "version": "0.2.0",
+  "generatedAt": "2026-11-15T13:38:38.781Z",
+  "canonicalRepo": "https://github.com/owlmeans/connect",
+  "entries": [
+    {
+      "kind": "skill",
+      "name": "llm-reader-google-drive",
+      "category": "package-specific",
+      "file": "skills/llm-reader-google-drive/SKILL.md",
+      "canonicalPath": ".agents/skills/llm-reader-google-drive/SKILL.md"
+    }
+  ]
+}

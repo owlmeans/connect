@@ -10,7 +10,7 @@ route that acts on a token) judge reCAPTCHA v2 and v3 tokens. The browser half i
 ## Installation
 
 ```bash
-bun add @owlmeans/captcha-recaptcha@^0.2.0-alpha.0
+bun add @owlmeans/captcha-recaptcha@^0.2.0
 ```
 
 ## Concepts
@@ -66,6 +66,14 @@ const check = makeCaptchaCheck(context, { provider: RECAPTCHA_PROVIDER, hostname
 | `RECAPTCHA_SITEVERIFY_URL`, `RECAPTCHA_VERIFY_TIMEOUT` | `https://www.google.com/recaptcha/api/siteverify`, `10_000` |
 | `RecaptchaProviderOptions`, `RecaptchaKeys`, `RecaptchaRecord`, `RecaptchaResponse`, `RecaptchaRequest`, `RecaptchaFetch`, `RecaptchaVerifier`, `RecaptchaVerifierOptions`, `RecaptchaProvider` | Types |
 
+## Related packages
+
+- [`@owlmeans/captcha`](https://github.com/owlmeans/common/tree/main/packages/captcha) (common) — the provider host, the `MOD_CAPTCHA` policy and `makeCaptchaCheck`
+- [`@owlmeans/server-auth`](https://github.com/owlmeans/common/tree/main/packages/server-auth) (common) — the captcha guest sign-in that judges this provider's verdicts
+- [`@owlmeans/server-auth-email`](https://github.com/owlmeans/common/tree/main/packages/server-auth-email) (common) — e-mail sign-in, a strict check over this provider
+- [`@owlmeans/config`](https://github.com/owlmeans/common/tree/main/packages/config) (common) — `plugin` and `clientPlugin` for the `MOD_RECAPTCHA` / `CMOD_RECAPTCHA` records
+- [`@owlmeans/web-captcha-recaptcha`](../web-captcha-recaptcha) — the browser half
+
 ## License
 
 MIT
@@ -78,7 +86,7 @@ This package ships embedded agent skills under `agent-meta/`. After installing y
 your project's skill store (`.agents/skills/`):
 
 ```sh
-npx @owlmeans/agent-skills@^0.2.0-alpha.0
+npx @owlmeans/agent-skills@^0.2.0
 ```
 
 The embedded files are version-matched to this package release. Do not edit them

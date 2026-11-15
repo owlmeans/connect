@@ -10,7 +10,7 @@ alone.
 ## Installation
 
 ```bash
-bun add @owlmeans/web-captcha-recaptcha@^0.2.0-alpha.0
+bun add @owlmeans/web-captcha-recaptcha@^0.2.0
 ```
 
 ## Concepts
@@ -60,6 +60,13 @@ const token = await client.execute(siteKey, 'inquiry')
 | `RECAPTCHA_SCRIPT_URL`, `RECAPTCHA_LOAD_TIMEOUT`, `RECAPTCHA_EXECUTE_TIMEOUT`, `RECAPTCHA_SCRIPT_ATTRIBUTE`, `RECAPTCHA_STYLE_ATTRIBUTE`, `RECAPTCHA_BADGE_CSS` | The loader's script, timeouts and marks |
 | `RecaptchaClient`, `RecaptchaClientOptions`, `RecaptchaLoader`, `RecaptchaLoaderOptions`, `Grecaptcha`, `RecaptchaWindow`, `RecaptchaDocument` | Types |
 
+## Related packages
+
+- [`@owlmeans/web-captcha`](https://github.com/owlmeans/common/tree/main/packages/web-captcha) (common) — the `CaptchaClient` contract, `captchaClients` and the notice helper
+- [`@owlmeans/web-auth-email`](https://github.com/owlmeans/common/tree/main/packages/web-auth-email) (common) — e-mail sign-in, which asks this client for a token
+- [`@owlmeans/web-panel`](https://github.com/owlmeans/common/tree/main/packages/web-panel) (common) — its captcha sign-in renders `RecaptchaCheckbox` when given as `widget`
+- [`@owlmeans/captcha-recaptcha`](../captcha-recaptcha) — the server half that verifies the token
+
 ## License
 
 MIT
@@ -72,7 +79,7 @@ This package ships embedded agent skills under `agent-meta/`. After installing y
 your project's skill store (`.agents/skills/`):
 
 ```sh
-npx @owlmeans/agent-skills@^0.2.0-alpha.0
+npx @owlmeans/agent-skills@^0.2.0
 ```
 
 The embedded files are version-matched to this package release. Do not edit them

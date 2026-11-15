@@ -9,7 +9,7 @@ user-invocable: false
 **Layer:** Server (Node / Bun — wherever `@owlmeans/llm-reader` runs)
 **Repo:** OwlMeans connect — the Drive half; the collector, sinks, guard and limits are common's
 `@owlmeans/llm-reader` (its `collect` part)
-**Install:** `"@owlmeans/llm-reader-google-drive": "^0.2.0-alpha.0"` beside `@owlmeans/llm-reader`
+**Install:** `"@owlmeans/llm-reader-google-drive": "^0.2.0"` beside `@owlmeans/llm-reader`
 
 ## Public API
 
@@ -88,12 +88,35 @@ reader's built-in S3 source.
   folder page (`google-drive:resolver`) and rewrites exports to its own formats; single files work
   through it either way.
 - Logging scope `llm-reader-google-drive`: ids, counts and reasons only — never an API key or a URL query.
-- Tests: `tests/source.spec.ts` runs a real reader over real local stand-ins (`tests/context.ts`
-  `startDriveStandIn`: Drive's embedded-view markup, `open?id=` redirects, ranged usercontent
-  downloads, the warning form, a quota page, Docs exports behind a redirect, the sign-in host, Drive
-  API v3 in pages of two with a refused key, a shortener) plus direct `expand` over plain `fetch`.
-  `tests/live.spec.ts` is gated by `LLM_READER_GDRIVE_LIVE=1`: a shared folder of three files checked
-  by sha256, and one file link.
+
+## Pitfalls
+
+- A Drive link that comes back as one `failed` item names its reason: `not-public` (share the item
+  as "anyone with the link"), `quota` (retry later), `not-found`, `api-key`.
+- Keyless listing has no sizes: every listed file costs one ranged probe request for its name and
+  size; with `apiKey` only files at or past Drive's 100 MiB scan limit are probed.
+- A pinned fetch built without `resolvers: []` breaks folder links (`google-drive:resolver`).
+
+## Tests
+
+`bun test ./tests` in the package.
+
+- `source.spec` runs a real reader over a real local stand-in of Google (`startDriveStandIn` in the
+  test context: Drive's embedded-view markup, `open?id=` redirects, ranged usercontent downloads, the
+  warning form, a quota page, Docs exports behind a redirect, the sign-in host, Drive API v3 in pages
+  of two with a refused key, a shortener) plus direct `expand` over plain `fetch` (`plainContext`):
+  link parsing and URL building, a folder collected with sub-folders and an exported Doc, the
+  depth/`maxEntries`/`maxFiles` cut, export options and single links, every refusal, the API-key path
+  with the key only as a header.
+- `live.spec` is gated by `LLM_READER_GDRIVE_LIVE=1`: a shared folder of three files checked by
+  sha256, and one file link.
+- When Drive's markup or redirects change, mirror Google's answer in the stand-in first, then
+  change the lister or probe; `origins` points every Google host at the stand-in.
+
+## Related
+
+- [[llm-reader]] (`@owlmeans/llm-reader`) — the reader, `ReaderSource`, the collector, sinks, guard and limits (its `collect` part)
+- [[file-streams]] (`@owlmeans/file-streams`) — the pinned `fetch` (`@owlmeans/file-streams/fetch`) to build with `resolvers: []`
 
 ## External docs
 
