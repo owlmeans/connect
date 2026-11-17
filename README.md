@@ -97,7 +97,7 @@ Every package ships version-matched agent skills in `agent-meta/`. After install
 `@owlmeans/*` packages, place them into your project's skill store (`.agents/skills/`):
 
 ```sh
-npx @owlmeans/agent-skills@^0.2.0
+npx @owlmeans/agent-skills@^0.2.1
 ```
 
 The embedded copies are regenerated from the canonical skills in [`.agents/skills`](.agents/skills)

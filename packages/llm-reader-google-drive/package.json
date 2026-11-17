@@ -1,6 +1,6 @@
 {
   "name": "@owlmeans/llm-reader-google-drive",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Google Drive source for @owlmeans/llm-reader: public folder, file and Docs links expanded into downloadable entries (keyless folder listing, optional Drive API key).",
   "license": "MIT",
   "homepage": "https://owlmeans.com/docs/",
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@owlmeans/error": "^0.2.0",
-    "@owlmeans/llm-reader": "^0.2.0",
+    "@owlmeans/llm-reader": "^0.2.1",
     "@owlmeans/log": "^0.2.0",
     "linkedom": "^0.18.15"
   },
