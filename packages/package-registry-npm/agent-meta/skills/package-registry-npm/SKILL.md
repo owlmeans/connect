@@ -10,7 +10,7 @@ user-invocable: false
 **Layer:** Server (Node/Bun; any runtime with `fetch`)
 **Repo:** OwlMeans connect — the npm half; the verdict engine, rules and host are common's
 `@owlmeans/package-inspector`
-**Install:** `"@owlmeans/package-registry-npm": "^0.2.1-alpha.0"` in `dependencies`
+**Install:** `"@owlmeans/package-registry-npm": "^0.2.1-rc.0"` in `dependencies`
 
 ## Public API
 

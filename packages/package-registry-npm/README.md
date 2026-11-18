@@ -8,7 +8,7 @@ packuments and readmes, bulk weekly download counts of a name's neighbours, and 
 ## Installation
 
 ```sh
-bun add @owlmeans/package-registry-npm@^0.2.1-alpha.0 @owlmeans/package-inspector@^0.2.1-alpha.0
+bun add @owlmeans/package-registry-npm@^0.2.1-rc.0 @owlmeans/package-inspector@^0.2.1-rc.0
 ```
 
 ## Usage
@@ -102,7 +102,7 @@ This package ships embedded agent skills under `agent-meta/`. After installing y
 your project's skill store (`.agents/skills/`):
 
 ```sh
-npx @owlmeans/agent-skills@^0.2.1-alpha.0
+npx @owlmeans/agent-skills@^0.2.2-rc.1
 ```
 
 The embedded files are version-matched to this package release. Do not edit them
