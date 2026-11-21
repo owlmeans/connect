@@ -10,7 +10,7 @@ user-invocable: false
 **Layer:** Server (a platform plugin)
 **Repo:** OwlMeans connect (`@owlmeans/bot-whatsapp`) — the WhatsApp-specific half; the bot runtime it plugs
 into (`@owlmeans/server-bot`) and the contract (`@owlmeans/bot`) are in common, which never depends on it
-**Install:** `"@owlmeans/bot-whatsapp": "^0.2.0"` in the backend's `dependencies`
+**Install:** `"@owlmeans/bot-whatsapp": "^0.2.2"` in the backend's `dependencies`
 
 The WhatsApp plugin (Cloud API: manual webhook): a `BotPlatformPlugin` over server-bot's public helpers, its
 descriptor (`WHATSAPP_DESCRIPTOR` — the data the panels draw through `platform.list`, its labels and hints

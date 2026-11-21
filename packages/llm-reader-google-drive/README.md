@@ -8,7 +8,7 @@ No Google account or API key is needed; an API key switches folder listing to Dr
 ## Installation
 
 ```sh
-bun add @owlmeans/llm-reader-google-drive@^0.2.1 @owlmeans/llm-reader@^0.2.1
+bun add @owlmeans/llm-reader-google-drive@^0.2.2 @owlmeans/llm-reader@^0.2.2
 ```
 
 ## Usage
@@ -105,7 +105,7 @@ This package ships embedded agent skills under `agent-meta/`. After installing y
 your project's skill store (`.agents/skills/`):
 
 ```sh
-npx @owlmeans/agent-skills@^0.2.1
+npx @owlmeans/agent-skills@^0.2.2
 ```
 
 The embedded files are version-matched to this package release. Do not edit them

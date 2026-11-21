@@ -10,7 +10,7 @@ user-invocable: false
 **Layer:** Server (a platform plugin)
 **Repo:** OwlMeans connect (`@owlmeans/bot-slack`) — the Slack-specific half; the bot runtime it plugs
 into (`@owlmeans/server-bot`) and the contract (`@owlmeans/bot`) are in common, which never depends on it
-**Install:** `"@owlmeans/bot-slack": "^0.2.0"` in the backend's `dependencies`
+**Install:** `"@owlmeans/bot-slack": "^0.2.2"` in the backend's `dependencies`
 
 The Slack plugin (Events API + Web API: manual Request URL): a `BotPlatformPlugin` over server-bot's public helpers, its
 descriptor (`SLACK_DESCRIPTOR` — the data the panels draw through `platform.list`, its labels and hints

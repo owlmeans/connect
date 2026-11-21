@@ -10,7 +10,7 @@ user-invocable: false
 **Layer:** Server (a platform plugin)
 **Repo:** OwlMeans connect (`@owlmeans/bot-telegram`) — the Telegram-specific half; the bot runtime it plugs
 into (`@owlmeans/server-bot`) and the contract (`@owlmeans/bot`) are in common, which never depends on it
-**Install:** `"@owlmeans/bot-telegram": "^0.2.0"` in the backend's `dependencies`
+**Install:** `"@owlmeans/bot-telegram": "^0.2.2"` in the backend's `dependencies`
 
 The Telegram plugin (Bot API: webhook or long polling): a `BotPlatformPlugin` over server-bot's public helpers, its
 descriptor (`TELEGRAM_DESCRIPTOR` — the data the panels draw through `platform.list`, its labels and hints
