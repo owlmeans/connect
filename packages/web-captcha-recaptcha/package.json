@@ -1,6 +1,6 @@
 {
   "name": "@owlmeans/web-captcha-recaptcha",
-  "version": "0.2.1-rc.0",
+  "version": "0.2.2",
   "description": "Google reCAPTCHA client for @owlmeans/web-captcha: the v3 loader, Google's notice in eight languages, the v2 checkbox widget (./react) and the append helper that registers it.",
   "license": "MIT",
   "homepage": "https://owlmeans.com/docs/",
@@ -40,14 +40,14 @@
     }
   },
   "dependencies": {
-    "@owlmeans/web-captcha": "^0.2.1-rc.0",
+    "@owlmeans/web-captcha": "^0.2.2",
     "react-google-recaptcha": "^3.1.0"
   },
   "peerDependencies": {
     "react": "*"
   },
   "devDependencies": {
-    "@owlmeans/dep-config": "^0.2.1-rc.0",
+    "@owlmeans/dep-config": "^0.2.2",
     "@types/bun": "^1.4.4",
     "@types/react": "^19.3.0",
     "@types/react-google-recaptcha": "^2.1.9",

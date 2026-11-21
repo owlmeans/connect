@@ -7,7 +7,7 @@ metadata:
 
 # Using `@owlmeans/mailer-mailgun`
 
-**Install:** `"@owlmeans/mailer-mailgun": "^0.2.1-rc.0"` in `dependencies`
+**Install:** `"@owlmeans/mailer-mailgun": "^0.2.2"` in `dependencies`
 
 A `MailerTransport` for `@owlmeans/mailer`'s host that posts to Mailgun's HTTP API with `fetch` —
 no SMTP socket and no SDK, so it bundles and runs anywhere `fetch` does. `@owlmeans/mailer-smtp`

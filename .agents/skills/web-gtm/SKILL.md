@@ -9,7 +9,7 @@ user-invocable: false
 **Layer:** Web
 **Repo:** OwlMeans connect (`@owlmeans/web-gtm`) — the Google-specific half; everything it builds on is
 in common
-**Install:** `"@owlmeans/web-gtm": "^0.2.1-rc.0"` in `dependencies`
+**Install:** `"@owlmeans/web-gtm": "^0.2.2"` in `dependencies`
 
 The Google half of the consent set. It holds no state of its own — the decision lives in
 `@owlmeans/consent` (common), which names no tag vendor — and it plugs Google into it in two places:

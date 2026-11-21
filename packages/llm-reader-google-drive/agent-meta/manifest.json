@@ -1,8 +1,8 @@
 {
   "schemaVersion": 3,
   "package": "@owlmeans/llm-reader-google-drive",
-  "version": "0.2.2-rc.1",
-  "generatedAt": "2026-11-18T10:10:49.027Z",
+  "version": "0.2.2",
+  "generatedAt": "2026-11-21T09:26:22.056Z",
   "canonicalRepo": "https://github.com/owlmeans/connect",
   "entries": [
     {

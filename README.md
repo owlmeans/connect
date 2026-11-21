@@ -42,12 +42,12 @@ Each package has its own README and a canonical skill under [`.agents/skills`](.
 Install a provider package together with the common contract package it plugs into:
 
 ```sh
-bun add @owlmeans/mailer-mailgun@^0.2.1-rc.0 @owlmeans/mailer@^0.2.1-rc.0
+bun add @owlmeans/mailer-mailgun@^0.2.2 @owlmeans/mailer@^0.2.2
 # or
-npm install @owlmeans/mailer-mailgun@^0.2.1-rc.0 @owlmeans/mailer@^0.2.1-rc.0
+npm install @owlmeans/mailer-mailgun@^0.2.2 @owlmeans/mailer@^0.2.2
 ```
 
-Connect and common ship on one synchronized stable line, `0.2.0`, under npm's `latest` dist-tag;
+Connect and common ship on one synchronized stable line, `0.2.2`, under npm's `latest` dist-tag;
 prereleases publish under `next`. Pin a caret range, never a tag.
 
 ## Registration
@@ -97,7 +97,7 @@ Every package ships version-matched agent skills in `agent-meta/`. After install
 `@owlmeans/*` packages, place them into your project's skill store (`.agents/skills/`):
 
 ```sh
-npx @owlmeans/agent-skills@^0.2.2-rc.1
+npx @owlmeans/agent-skills@^0.2.2
 ```
 
 The embedded copies are regenerated from the canonical skills in [`.agents/skills`](.agents/skills)
