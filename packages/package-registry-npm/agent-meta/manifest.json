@@ -1,9 +1,9 @@
 {
   "schemaVersion": 3,
   "package": "@owlmeans/package-registry-npm",
-  "version": "0.2.2",
-  "generatedAt": "2026-11-21T09:26:22.052Z",
-  "canonicalRepo": "https://github.com/owlmeans/connect",
+  "version": "0.2.3",
+  "generatedAt": "2026-11-23T12:48:29.808Z",
+  "canonicalRepo": "https://github.com/owlmeans/common",
   "entries": [
     {
       "kind": "skill",

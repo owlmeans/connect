@@ -10,7 +10,7 @@ user-invocable: false
 **Layer:** Server
 **Repo:** OwlMeans connect (`@owlmeans/captcha-recaptcha`) — the Google-specific half; the host, the
 policies and the guest sign-in are common's `@owlmeans/captcha` and `@owlmeans/server-auth`
-**Install:** `"@owlmeans/captcha-recaptcha": "^0.2.2"` in `dependencies`
+**Install:** `"@owlmeans/captcha-recaptcha": "^0.2.3"` in `dependencies`
 **Browser half:** `@owlmeans/web-captcha-recaptcha` (the v3 loader client, Google's notice, the v2 checkbox)
 
 ## Public API surface

@@ -1,6 +1,6 @@
 {
   "name": "@owlmeans/web-gtm",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Google tag behind OwlMeans consent: the Consent Mode signal provider, the head tag with its defaults before the loader, the tag-manager analytics sink, CSP hosts and cookie-policy disclosure.",
   "license": "MIT",
   "homepage": "https://owlmeans.com/docs/",
@@ -33,12 +33,12 @@
     }
   },
   "dependencies": {
-    "@owlmeans/consent": "^0.2.2",
-    "@owlmeans/log": "^0.2.2",
-    "@owlmeans/web-log": "^0.2.2"
+    "@owlmeans/consent": "^0.2.3",
+    "@owlmeans/log": "^0.2.3",
+    "@owlmeans/web-log": "^0.2.3"
   },
   "devDependencies": {
-    "@owlmeans/dep-config": "^0.2.2",
+    "@owlmeans/dep-config": "^0.2.3",
     "@types/bun": "^1.4.4",
     "nodemon": "^3.1.14",
     "typescript": "^7.0.2"

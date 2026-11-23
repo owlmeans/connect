@@ -1,9 +1,9 @@
 {
   "schemaVersion": 3,
   "package": "@owlmeans/bot-discord",
-  "version": "0.2.2",
-  "generatedAt": "2026-11-21T09:26:22.054Z",
-  "canonicalRepo": "https://github.com/owlmeans/connect",
+  "version": "0.2.3",
+  "generatedAt": "2026-11-23T12:48:29.810Z",
+  "canonicalRepo": "https://github.com/owlmeans/common",
   "entries": [
     {
       "kind": "skill",
