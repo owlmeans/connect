@@ -12,7 +12,9 @@ An organization entity is the customer/tenant. `entitySlug` is its renameable wi
 
 ## Environments (mandatory)
 
-Work only in the checkout identified by its path: main or the named vslot. Never touch other slots unless explicitly requested.
+Work only in the environment identified by the checkout path: main, a named vslot, or production.
+`~/projects/owlmeans/prods/connect` is the independent production library worktree on protected branch `prod`.
+From that worktree, read [production-environments](../../library-manager/.agents/skills/production-environments/SKILL.md) before work.
 
 ## Reporting (mandatory)
 
@@ -36,7 +38,7 @@ Public MIT provider plugins (chat platforms, reCAPTCHA, Stripe, Mailgun, Google 
 
 ## Commands
 
-Run `./setup.sh` before `bun install`. Use `bun run build`, `bun run test`, `bun run dev`, and `bun run watch`. The private `_tpl` is excluded from root commands; build it directly when checking the template.
+In development checkouts, run `./setup.sh` before `bun install`. Use `bun run build`, `bun run test`, `bun run dev`, and `bun run watch`. The private `_tpl` is excluded from root commands; build it directly when checking the template.
 
 ## Skills
 
