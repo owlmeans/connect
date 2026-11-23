@@ -1,6 +1,6 @@
 {
   "name": "@owlmeans/server-payment-stripe",
-  "version": "0.2.3-alpha.0",
+  "version": "0.2.3",
   "description": "Stripe provider for @owlmeans/server-payment: checkout, subscriptions, refunds, webhooks, catalogue sync, portal, Stripe Tax and FX quotes.",
   "license": "MIT",
   "homepage": "https://owlmeans.com/docs/",
@@ -33,25 +33,25 @@
     }
   },
   "dependencies": {
-    "@owlmeans/config": "^0.2.3-alpha.0",
-    "@owlmeans/log": "^0.2.3-alpha.0",
-    "@owlmeans/payment": "^0.2.3-alpha.0",
-    "@owlmeans/server-api": "^0.2.3-alpha.0",
-    "@owlmeans/server-payment": "^0.2.3-alpha.0",
+    "@owlmeans/config": "^0.2.3",
+    "@owlmeans/log": "^0.2.3",
+    "@owlmeans/payment": "^0.2.3",
+    "@owlmeans/server-api": "^0.2.3",
+    "@owlmeans/server-payment": "^0.2.3",
     "stripe": "^23.0.1"
   },
   "peerDependencies": {
     "ajv": "*"
   },
   "devDependencies": {
-    "@owlmeans/context": "^0.2.3-alpha.0",
-    "@owlmeans/dep-config": "^0.2.3-alpha.0",
-    "@owlmeans/mongo": "^0.2.3-alpha.0",
-    "@owlmeans/mongo-resource": "^0.2.3-alpha.0",
-    "@owlmeans/server-context": "^0.2.3-alpha.0",
-    "@owlmeans/server-entrypoint": "^0.2.3-alpha.0",
-    "@owlmeans/test-integration": "^0.2.3-alpha.0",
-    "@owlmeans/test-payment": "^0.2.3-alpha.0",
+    "@owlmeans/context": "^0.2.3",
+    "@owlmeans/dep-config": "^0.2.3",
+    "@owlmeans/mongo": "^0.2.3",
+    "@owlmeans/mongo-resource": "^0.2.3",
+    "@owlmeans/server-context": "^0.2.3",
+    "@owlmeans/server-entrypoint": "^0.2.3",
+    "@owlmeans/test-integration": "^0.2.3",
+    "@owlmeans/test-payment": "^0.2.3",
     "@types/bun": "^1.4.4",
     "@types/node": "^26.6.5",
     "ajv": "^8.20.0",

@@ -10,7 +10,7 @@ user-invocable: false
 `react-google-recaptcha` reach only `./react`)
 **Repo:** OwlMeans connect (`@owlmeans/web-captcha-recaptcha`) — the Google-specific half; the
 contract, the registry and `useCaptcha` are common's `@owlmeans/web-captcha`
-**Install:** `"@owlmeans/web-captcha-recaptcha": "^0.2.3-alpha.0"` in `dependencies`
+**Install:** `"@owlmeans/web-captcha-recaptcha": "^0.2.3"` in `dependencies`
 **Server half:** `@owlmeans/captcha-recaptcha` (provider id `recaptcha`)
 
 ## Public API surface
