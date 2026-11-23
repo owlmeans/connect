@@ -1,6 +1,6 @@
 {
   "name": "@owlmeans/captcha-recaptcha",
-  "version": "0.2.2-alpha.0",
+  "version": "0.2.3-alpha.0",
   "description": "Google reCAPTCHA provider for @owlmeans/captcha: siteverify mapped onto the neutral verdict, its config records and the append helper that registers it.",
   "license": "MIT",
   "homepage": "https://owlmeans.com/docs/",
@@ -33,15 +33,15 @@
     }
   },
   "dependencies": {
-    "@owlmeans/auth": "^0.2.2-alpha.0",
-    "@owlmeans/captcha": "^0.2.2-alpha.0",
-    "@owlmeans/config": "^0.2.2-alpha.0",
-    "@owlmeans/context": "^0.2.2-alpha.0",
-    "@owlmeans/log": "^0.2.2-alpha.0"
+    "@owlmeans/auth": "^0.2.3-alpha.0",
+    "@owlmeans/captcha": "^0.2.3-alpha.0",
+    "@owlmeans/config": "^0.2.3-alpha.0",
+    "@owlmeans/context": "^0.2.3-alpha.0",
+    "@owlmeans/log": "^0.2.3-alpha.0"
   },
   "devDependencies": {
-    "@owlmeans/dep-config": "^0.2.2-alpha.0",
-    "@owlmeans/test": "^0.2.2-alpha.0",
+    "@owlmeans/dep-config": "^0.2.3-alpha.0",
+    "@owlmeans/test": "^0.2.3-alpha.0",
     "@types/bun": "^1.4.4",
     "@types/node": "^26.6.5",
     "nodemon": "^3.1.14",

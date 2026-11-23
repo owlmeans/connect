@@ -9,7 +9,7 @@ user-invocable: false
 **Layer:** Server (a platform plugin)
 **Repo:** OwlMeans connect (`@owlmeans/bot-discord`) — the Discord-specific half; the bot runtime it plugs
 into (`@owlmeans/server-bot`) and the contract (`@owlmeans/bot`) are in common, which never depends on it
-**Install:** `"@owlmeans/bot-discord": "^0.2.2-alpha.0"` in the backend's `dependencies`
+**Install:** `"@owlmeans/bot-discord": "^0.2.3-alpha.0"` in the backend's `dependencies`
 
 The Discord plugin (REST v10 + gateway): a `BotPlatformPlugin` over server-bot's public helpers, its
 descriptor (`DISCORD_DESCRIPTOR` — the data the panels draw through `platform.list`, its labels and hints
