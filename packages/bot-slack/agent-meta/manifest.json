@@ -1,8 +1,8 @@
 {
   "schemaVersion": 3,
   "package": "@owlmeans/bot-slack",
-  "version": "0.2.3",
-  "generatedAt": "2026-11-23T12:48:29.813Z",
+  "version": "0.2.4-rc.0",
+  "generatedAt": "2026-11-23T20:45:39.245Z",
   "canonicalRepo": "https://github.com/owlmeans/common",
   "entries": [
     {

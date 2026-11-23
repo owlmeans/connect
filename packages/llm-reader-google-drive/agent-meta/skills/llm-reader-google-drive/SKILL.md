@@ -10,7 +10,7 @@ user-invocable: false
 **Layer:** Server (Node / Bun — wherever `@owlmeans/llm-reader` runs)
 **Repo:** OwlMeans connect — the Drive half; the collector, sinks, guard and limits are common's
 `@owlmeans/llm-reader` (its `collect` part)
-**Install:** `"@owlmeans/llm-reader-google-drive": "^0.2.3"` beside `@owlmeans/llm-reader`
+**Install:** `"@owlmeans/llm-reader-google-drive": "^0.2.4-rc.0"` beside `@owlmeans/llm-reader`
 
 ## Public API
 

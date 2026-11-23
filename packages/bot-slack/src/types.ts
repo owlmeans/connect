@@ -191,8 +191,6 @@ export interface SlackMock extends BotPlatformMock {
 
 /** One mock connection's state. */
 export interface SlackMockState {
-  /** The last `ts` handed out, in microseconds — every new one is later. */
-  clock: number
   /** Every call, with `auth` — the token it carried (`bot`, `user` or `none`). */
   calls: BotMockCall[]
   /** The `ts` of messages the fake bot posted — a thread under one is the bot's. */

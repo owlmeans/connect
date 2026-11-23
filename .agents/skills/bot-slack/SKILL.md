@@ -9,7 +9,7 @@ user-invocable: false
 **Layer:** Server (a platform plugin)
 **Repo:** OwlMeans connect (`@owlmeans/bot-slack`) — the Slack-specific half; the bot runtime it plugs
 into (`@owlmeans/server-bot`) and the contract (`@owlmeans/bot`) are in common, which never depends on it
-**Install:** `"@owlmeans/bot-slack": "^0.2.3"` in the backend's `dependencies`
+**Install:** `"@owlmeans/bot-slack": "^0.2.4-rc.0"` in the backend's `dependencies`
 
 The Slack plugin (Events API + Web API: manual Request URL): a `BotPlatformPlugin` over server-bot's public helpers, its
 descriptor (`SLACK_DESCRIPTOR` — the data the panels draw through `platform.list`, its labels and hints
@@ -104,6 +104,8 @@ for a private chat; `replyTo`/`thread` → `thread_ts` + `parent_user_id`; `@<bo
 `& < >` escaped) signed NOW with `signingSecret`, else the `hookSecret`; `mock.challenge(connection,
 value?)` builds a signed `url_verification`. Slack has no receiver: `mock.feed` throws.
 `slackSignatureHelper.sign(secret, timestamp, body)` signs a hand-made payload.
+Mock `ts` values advance across all mock instances in one process. Their randomized microsecond
+offset reduces collisions with timestamps stored by earlier processes.
 
 
 ## Testing

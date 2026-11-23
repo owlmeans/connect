@@ -20,7 +20,7 @@ const bodyOf = (mock: BotPlatformMock, platform: string): any => mock.inbound(in
 const lifetimes = <T>(make: () => { mock: BotPlatformMock }, read: (mock: BotPlatformMock) => T): T[] =>
   Array.from({ length: 8 }, () => read(make().mock))
 
-describe('@owlmeans/bot-slack — mock ids: the platform\'s shapes, unique across restarts and processes', () => {
+describe('@owlmeans/bot-slack — mock ids: platform shapes and uniqueness across mock instances', () => {
   test('Slack: ts is now with a unique microsecond part, event_id is random; both differ across lifetimes', () => {
     const plugin = makeSlackBotPlatform()
     const one = bodyOf(plugin.mock, 'slack')
@@ -29,6 +29,7 @@ describe('@owlmeans/bot-slack — mock ids: the platform\'s shapes, unique acros
     const events = bodies.map(body => body.event_id as string)
 
     expect(stamps.every(ts => /^\d{10}\.\d{6}$/.test(ts))).toBe(true)
+    expect(stamps).toEqual([...stamps].sort())
     expect(Math.abs(Number(one.event.ts) - Date.now() / 1000)).toBeLessThan(5)
     expect(events.every(id => /^Ev[0-9A-Z]{10}$/.test(id))).toBe(true)
     expect([new Set(stamps).size, new Set(events).size]).toEqual([bodies.length, bodies.length])

@@ -12,6 +12,8 @@ import type {
   SlackMockState, SlackPosted,
 } from './types.js'
 
+let mockClock = 0
+
 /**
  * The Web API and the Events API, faked per connection and in process: the same URLs, `{ ok, error }`
  * answers and payload shapes the real service uses, no network. `auth.test` answers a stable fake
@@ -25,7 +27,7 @@ export const makeSlackMock = (): SlackMock => {
   const stateOf = (connection: string): SlackMockState => {
     let state = states.get(connection)
     if (state == null) {
-      state = { clock: 0, calls: [], sent: new Set(), reactions: new Set() }
+      state = { calls: [], sent: new Set(), reactions: new Set() }
       states.set(connection, state)
     }
 
@@ -37,12 +39,12 @@ export const makeSlackMock = (): SlackMock => {
     `${prefix}${BigInt(`0x${createHash('sha256').update(text).digest('hex').slice(0, 15)}`).toString(36).toUpperCase().padStart(10, '0').slice(0, 10)}`
 
   /**
-   * A later `ts` than any the connection handed out: `<seconds>.<microseconds>`, the microseconds
-   * below the millisecond random — a restarted or another process does not meet a stored one.
+   * A later `ts` than any mock issued in this process. Sub-millisecond randomness reduces the
+   * chance of colliding with a timestamp persisted by another process.
    */
-  const nextTs = (state: SlackMockState): string => {
-    state.clock = Math.max(Date.now() * 1000 + randomInt(1000), state.clock + 1)
-    return `${Math.floor(state.clock / 1_000_000)}.${`${state.clock % 1_000_000}`.padStart(6, '0')}`
+  const nextTs = (): string => {
+    mockClock = Math.max(Date.now() * 1000 + randomInt(1000), mockClock + 1)
+    return `${Math.floor(mockClock / 1_000_000)}.${`${mockClock % 1_000_000}`.padStart(6, '0')}`
   }
 
   /** A random `Ev…` event id. */
@@ -116,7 +118,7 @@ export const makeSlackMock = (): SlackMock => {
         if (body.length > SLACK_TEXT_MAX) {
           return refuse('msg_too_long')
         }
-        const ts = nextTs(state)
+        const ts = nextTs()
         state.sent.add(ts)
         const thread = text(params.thread_ts)
         const posted: SlackPosted = {
@@ -209,7 +211,7 @@ export const makeSlackMock = (): SlackMock => {
       ? chatId != null && /^D[A-Z0-9]{2,}$/.test(chatId) ? chatId : idOf('D', `${connection.id}:${chatId ?? senderId}`)
       : chatId != null && /^[CG][A-Z0-9]{2,}$/.test(chatId) ? chatId
         : chatId != null && chatId !== '' ? idOf('C', chatId) : SLACK_MOCK_CHANNEL_ID
-    const ts = nextTs(state)
+    const ts = nextTs()
     const parent = input.replyTo?.id ?? input.chat?.thread
     const thread = parent != null && parent !== '' ? tsOf(parent) : undefined
     // The client escapes `& < >` but keeps control sequences (`<@U…>`, `<#C…>`, `<https://…>`), and
