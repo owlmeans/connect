@@ -1,6 +1,6 @@
 {
   "name": "@owlmeans/bot-telegram",
-  "version": "0.2.4-rc.0",
+  "version": "0.2.4-rc.1",
   "description": "OwlMeans chat-bot platform plugin for Telegram: the @owlmeans/server-bot plugin, its descriptor and its native API client.",
   "license": "MIT",
   "homepage": "https://owlmeans.com/docs/",
@@ -33,19 +33,19 @@
     }
   },
   "dependencies": {
-    "@owlmeans/bot": "^0.2.3",
-    "@owlmeans/context": "^0.2.3",
-    "@owlmeans/server-bot": "^0.2.4-rc.0"
+    "@owlmeans/bot": "^0.2.4-rc.0",
+    "@owlmeans/context": "^0.2.4-rc.0",
+    "@owlmeans/server-bot": "^0.2.4-rc.1"
   },
   "peerDependencies": {
     "ajv": "*"
   },
   "devDependencies": {
-    "@owlmeans/dep-config": "^0.2.3",
-    "@owlmeans/log": "^0.2.3",
-    "@owlmeans/resource": "^0.2.3",
-    "@owlmeans/static-resource": "^0.2.3",
-    "@owlmeans/test": "^0.2.3",
+    "@owlmeans/dep-config": "^0.2.4-rc.0",
+    "@owlmeans/log": "^0.2.4-rc.0",
+    "@owlmeans/resource": "^0.2.4-rc.0",
+    "@owlmeans/static-resource": "^0.2.4-rc.0",
+    "@owlmeans/test": "^0.2.4-rc.0",
     "@types/bun": "^1.4.4",
     "@types/node": "^26.6.5",
     "ajv": "^8.20.0",

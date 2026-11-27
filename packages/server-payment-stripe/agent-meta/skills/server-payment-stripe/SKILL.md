@@ -11,7 +11,7 @@ user-invocable: false
 **Repo:** OwlMeans connect (`@owlmeans/server-payment-stripe`) — the Stripe half; the host (the
 stores, the subscription and purchase logic, consumer rights, the gates, the webhook route) is
 common's `@owlmeans/server-payment` (its `server-payment` skill)
-**Install:** `"@owlmeans/server-payment-stripe": "^0.2.3"` in `dependencies`
+**Install:** `"@owlmeans/server-payment-stripe": "^0.2.4-rc.0"` in `dependencies`
 
 The provider turns the host's neutral paygate calls into Stripe SDK calls and Stripe payloads into
 the host's events. It decides nothing the host owns — which plan, which paygate, the buyer's
